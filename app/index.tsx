@@ -4,7 +4,7 @@ import { useTheme } from "@/lib/theme/hooks/useTheme";
 import { router } from "expo-router";
 import { Pressable, useWindowDimensions, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { AnimatedGradient } from "@/lib/components/Gradient";
 import { FadeIn } from "@/lib/components/FadeIn";
 import { LottieView } from "@/lib/components/LottieView";
@@ -58,10 +58,9 @@ export default function Index() {
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, zIndex: 10, position: "relative" }}>
         <Container
           gutter="lg"
-          paddingVertical="lg"
           paddingTop="3xl"
           style={{
             flex: 1,
