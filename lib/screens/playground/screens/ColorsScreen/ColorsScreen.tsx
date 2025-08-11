@@ -11,19 +11,12 @@ import { ScrollView } from "react-native";
 const ColorSwatch: FC<{
   color: string;
   name: string;
-  showBorder?: boolean;
-}> = ({ color, name, showBorder = false }) => {
+}> = ({ color, name }) => {
   const styles = useStyles(stylesDefinition);
 
   return (
     <Box style={styles.colorSwatchContainer}>
-      <Box
-        style={[
-          styles.colorSwatch,
-          { backgroundColor: color },
-          showBorder && styles.colorSwatchBorder,
-        ]}
-      />
+      <Box style={[styles.colorSwatch, { backgroundColor: color }]} />
       <Typography variant="caption" style={styles.colorName} numberOfLines={1}>
         {name}
       </Typography>
@@ -37,26 +30,28 @@ const ColorSwatch: FC<{
 export const ColorsScreen = () => {
   const { theme } = useTheme();
 
-  // Helper function to check if a color is light (to determine if we need a border)
-  const isLightColor = (color: string): boolean => {
-    // Simple check for white/light colors that need a border
-    return color === "#fff" || color === "#ffffff" || color.includes("f5f5f5");
-  };
+  const singleColors = Object.entries(theme.colors).reduce(
+    (acc, [key, value]) => {
+      if (typeof value === "object") {
+        return acc;
+      }
 
-  // Separate single colors from color palettes
-  const singleColors = {
-    ground: theme.colors.ground,
-    figure: theme.colors.figure,
-    white: theme.colors.white,
-    black: theme.colors.black,
-  };
+      acc[key] = value;
+      return acc;
+    },
+    {} as Record<string, string>
+  );
 
-  const colorPalettes = {
-    brand: theme.colors.brand,
-    red: theme.colors.red,
-    green: theme.colors.green,
-    gray: theme.colors.gray,
-  };
+  const colorPalettes = Object.entries(theme.colors).reduce(
+    (acc, [key, value]) => {
+      if (typeof value !== "object") {
+        return acc;
+      }
+      acc[key] = value;
+      return acc;
+    },
+    {} as Record<string, Record<string, string>>
+  );
 
   return (
     <ScrollView>
@@ -65,12 +60,7 @@ export const ColorsScreen = () => {
           <Card title="Base Colors">
             <Stack direction="horizontal" gap="md" style={{ flexWrap: "wrap" }}>
               {Object.entries(singleColors).map(([name, color]) => (
-                <ColorSwatch
-                  key={name}
-                  color={color}
-                  name={name}
-                  showBorder={isLightColor(color)}
-                />
+                <ColorSwatch key={name} color={color} name={name} />
               ))}
             </Stack>
           </Card>
@@ -91,8 +81,7 @@ export const ColorsScreen = () => {
                   <ColorSwatch
                     key={`${paletteName}-${shade}`}
                     color={color}
-                    name={`${paletteName} ${shade}`}
-                    showBorder={isLightColor(color)}
+                    name={`${paletteName}.${shade}`}
                   />
                 ))}
               </Stack>

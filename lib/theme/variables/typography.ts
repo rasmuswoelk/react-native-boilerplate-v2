@@ -36,7 +36,15 @@ const fontSize = {
   ["7xl"]: 64,
 } as const;
 
-const variant = {
+const variant: Record<
+  string,
+  {
+    fontSize?: number;
+    fontWeight?: number;
+    lineHeight?: number;
+    fontFamily?: string;
+  }
+> = {
   h1: {
     fontSize: fontSize["3xl"],
     fontWeight: fontWeight.black,

@@ -1,6 +1,7 @@
 import { Box } from "@/lib/components/Box";
 import { createStyles, useStyles } from "@/lib/theme/hooks/useStyles";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text } from "@/lib/components/Text";
 
 export const IndexScreen = () => {
   const styles = useStyles(stylesDefinition);

@@ -1,6 +1,6 @@
 # Gradient Components
 
-This directory contains gradient components built with React Native Skia for high-performance rendering.
+This directory contains gradient components built with React Native Skia for high-performance rendering. The components follow a proper inheritance structure where `AnimatedGradient` extends the base `Gradient` component.
 
 ## Components
 
@@ -43,15 +43,23 @@ A customizable static gradient component (formerly `RandomGradient`).
 
 ### `AnimatedGradient`
 
-An animated gradient component with subtle motion effects using react-native-reanimated.
+An animated gradient component that extends the base `Gradient` component with animation capabilities.
 
 **Props:**
 
-- All props from `Gradient` except `autoGenerate` and `colorPalette`
+- Extends `GradientProps` except for static-only props (`autoGenerate`, `colorPalette`, `colorCount`, `blendMode`)
 - `colors: string[]` - Required array of colors for the gradient
-- `speed?: GradientSpeed` - Animation speed: 'slow' | 'medium' | 'fast' (default: 'medium')
 - `animationType?: AnimationType` - Type of animation (default: 'shift')
 - `paused?: boolean` - Whether to pause the animation (default: false)
+
+**Inherited from Gradient:**
+
+- `style?: ViewStyle` - Style for the canvas container
+- `width?: number` - Width of the gradient area (default: 256)
+- `height?: number` - Height of the gradient area (default: 256)
+- `direction?: GradientDirection` - Direction of the gradient (default: 'diagonal')
+- `speed?: GradientSpeed` - Animation speed: 'slow' | 'medium' | 'fast' (default: 'medium')
+- `opacity?: number` - Opacity of the gradient (default: 1)
 
 **Animation Types:**
 
@@ -138,14 +146,69 @@ import { AnimatedGradient } from "@/lib/components/Gradient";
 - Consider using `paused` prop to pause animations when components are off-screen
 - For full-screen gradients, match width/height to screen dimensions
 
+## Architecture & Type System
+
+The gradient components follow a proper inheritance pattern:
+
+### Component Hierarchy
+
+- **`Gradient`** - Base component with static gradient functionality
+- **`AnimatedGradient`** - Extends `Gradient` with animation capabilities
+- **`RandomGradient`** - Alias for `Gradient` (backward compatibility)
+
+### Type Inheritance
+
+```tsx
+// Base types
+export type GradientDirection =
+  | "horizontal"
+  | "vertical"
+  | "diagonal"
+  | "radial"
+  | "random";
+export type GradientSpeed = "slow" | "medium" | "fast";
+export type AnimationType = "shift" | "rotate" | "breathe" | "wave" | "pulse";
+
+// Base interface
+export interface GradientProps {
+  /* ... */
+}
+
+// Extended interface
+export interface AnimatedGradientProps
+  extends Omit<
+    GradientProps,
+    "autoGenerate" | "colorPalette" | "colorCount" | "blendMode"
+  > {
+  colors: string[];
+  animationType?: AnimationType;
+  paused?: boolean;
+}
+```
+
+### Available Imports
+
+```tsx
+import {
+  Gradient,
+  AnimatedGradient,
+  RandomGradient,
+  type GradientProps,
+  type AnimatedGradientProps,
+  type GradientDirection,
+  type GradientSpeed,
+  type AnimationType,
+} from "@/lib/components/Gradient";
+```
+
 ## Migration from RandomGradient
 
-The `RandomGradient` component has been renamed to `Gradient` with additional customization options. The old name is still exported for backward compatibility:
+The `RandomGradient` component has been consolidated into the main `Gradient` component with additional customization options. The old name is still exported for backward compatibility:
 
 ```tsx
 // Old way (still works)
 import { RandomGradient } from "@/lib/components/Gradient";
 
-// New way
+// New way (recommended)
 import { Gradient } from "@/lib/components/Gradient";
 ```

@@ -14,13 +14,13 @@ import omit from "lodash/omit";
 import { useMemo } from "react";
 import {
   StyleProp,
-  Text,
   TextProps,
   TextStyle,
   View,
   ViewProps,
   ViewStyle,
 } from "react-native";
+import { Text } from "@/lib/components/Text";
 
 type BoxBaseProps = {
   color?: ColorPath;

@@ -2,10 +2,15 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Canvas, Rect, LinearGradient, vec } from "@shopify/react-native-skia";
 import { ViewStyle } from "react-native";
 
-type GradientDirection = 'horizontal' | 'vertical' | 'diagonal' | 'radial' | 'random';
-type GradientSpeed = 'slow' | 'medium' | 'fast';
+export type GradientDirection =
+  | "horizontal"
+  | "vertical"
+  | "diagonal"
+  | "radial"
+  | "random";
+export type GradientSpeed = "slow" | "medium" | "fast";
 
-interface GradientProps {
+export interface GradientProps {
   /**
    * Style for the canvas container
    */
@@ -53,7 +58,13 @@ interface GradientProps {
    * Blend mode for the gradient
    * @default 'normal'
    */
-  blendMode?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten';
+  blendMode?:
+    | "normal"
+    | "multiply"
+    | "screen"
+    | "overlay"
+    | "darken"
+    | "lighten";
   /**
    * Opacity of the gradient
    * @default 1
@@ -83,10 +94,10 @@ export const Gradient: React.FC<GradientProps> = ({
   autoGenerate = true,
   colorPalette = DEFAULT_COLOR_PALETTE,
   colorCount = 2,
-  direction = 'random',
-  speed = 'medium',
+  direction = "random",
+  speed: _speed = "medium", // Unused in static gradient
   colors,
-  blendMode = 'normal',
+  blendMode = "normal",
   opacity = 1,
 }) => {
   const [gradientConfig, setGradientConfig] = useState({
@@ -95,30 +106,36 @@ export const Gradient: React.FC<GradientProps> = ({
     end: vec(width, height),
   });
 
-  const getDirectionVectors = useCallback((dir: GradientDirection) => {
-    switch (dir) {
-      case 'horizontal':
-        return { start: vec(0, height / 2), end: vec(width, height / 2) };
-      case 'vertical':
-        return { start: vec(width / 2, 0), end: vec(width / 2, height) };
-      case 'diagonal':
-        return { start: vec(0, 0), end: vec(width, height) };
-      case 'radial':
-        return { start: vec(width / 2, height / 2), end: vec(width, height / 2) };
-      case 'random':
-      default:
-        const startX = Math.random() * width;
-        const startY = Math.random() * height;
-        const endX = Math.random() * width;
-        const endY = Math.random() * height;
-        return { start: vec(startX, startY), end: vec(endX, endY) };
-    }
-  }, [width, height]);
+  const getDirectionVectors = useCallback(
+    (dir: GradientDirection) => {
+      switch (dir) {
+        case "horizontal":
+          return { start: vec(0, height / 2), end: vec(width, height / 2) };
+        case "vertical":
+          return { start: vec(width / 2, 0), end: vec(width / 2, height) };
+        case "diagonal":
+          return { start: vec(0, 0), end: vec(width, height) };
+        case "radial":
+          return {
+            start: vec(width / 2, height / 2),
+            end: vec(width, height / 2),
+          };
+        case "random":
+        default:
+          const startX = Math.random() * width;
+          const startY = Math.random() * height;
+          const endX = Math.random() * width;
+          const endY = Math.random() * height;
+          return { start: vec(startX, startY), end: vec(endX, endY) };
+      }
+    },
+    [width, height]
+  );
 
   const generateGradient = useCallback(() => {
     // Use custom colors if provided, otherwise use palette
     let selectedColors: string[];
-    
+
     if (colors && colors.length >= 2) {
       selectedColors = colors;
     } else {
@@ -137,7 +154,7 @@ export const Gradient: React.FC<GradientProps> = ({
       start: vectors.start,
       end: vectors.end,
     });
-  }, [width, height, colorPalette, colorCount, colors, direction, getDirectionVectors]);
+  }, [colorPalette, colorCount, colors, direction, getDirectionVectors]);
 
   useEffect(() => {
     if (autoGenerate) {
@@ -145,18 +162,21 @@ export const Gradient: React.FC<GradientProps> = ({
     }
   }, [autoGenerate, generateGradient]);
 
-  // Debug logging for development
+  // Debug logging for development (remove in production)
   useEffect(() => {
-    console.log("Gradient config:", {
-      colors: gradientConfig.colors,
-      start: gradientConfig.start,
-      end: gradientConfig.end,
-      width,
-      height,
-      direction,
-      blendMode,
-      opacity,
-    });
+    if (__DEV__) {
+      // eslint-disable-next-line no-console
+      console.log("Gradient config:", {
+        colors: gradientConfig.colors,
+        start: gradientConfig.start,
+        end: gradientConfig.end,
+        width,
+        height,
+        direction,
+        blendMode,
+        opacity,
+      });
+    }
   }, [gradientConfig, width, height, direction, blendMode, opacity]);
 
   // Fallback if no colors are available

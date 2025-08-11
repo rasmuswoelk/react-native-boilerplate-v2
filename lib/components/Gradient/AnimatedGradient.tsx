@@ -1,56 +1,24 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ViewStyle } from "react-native";
 import Animated from "react-native-reanimated";
 import { Canvas, Rect, LinearGradient, vec } from "@shopify/react-native-skia";
+import { GradientProps, GradientSpeed } from "./Gradient";
 
-type GradientDirection =
-  | "horizontal"
-  | "vertical"
-  | "diagonal"
-  | "radial"
-  | "random";
-type GradientSpeed = "slow" | "medium" | "fast";
-type AnimationType = "shift" | "rotate" | "breathe" | "wave" | "pulse";
+export type AnimationType = "shift" | "rotate" | "breathe" | "wave" | "pulse";
 
-interface AnimatedGradientProps {
+export interface AnimatedGradientProps
+  extends Omit<
+    GradientProps,
+    "autoGenerate" | "colorPalette" | "colorCount" | "blendMode"
+  > {
   /**
-   * Style for the canvas container
-   */
-  style?: ViewStyle;
-  /**
-   * Width of the gradient area
-   * @default 256
-   */
-  width?: number;
-  /**
-   * Height of the gradient area
-   * @default 256
-   */
-  height?: number;
-  /**
-   * Array of colors for the gradient
+   * Array of colors for the gradient (required for animated gradient)
    */
   colors: string[];
-  /**
-   * Direction of the gradient
-   * @default 'diagonal'
-   */
-  direction?: GradientDirection;
-  /**
-   * Animation speed
-   * @default 'medium'
-   */
-  speed?: GradientSpeed;
   /**
    * Type of animation
    * @default 'shift'
    */
   animationType?: AnimationType;
-  /**
-   * Opacity of the gradient
-   * @default 1
-   */
-  opacity?: number;
   /**
    * Whether to pause the animation
    * @default false
@@ -84,7 +52,10 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
   opacity = 1,
   paused = false,
 }) => {
-  const getBaseDirectionVectors = useCallback(() => {
+  const getBaseDirectionVectors = useCallback((): {
+    start: ReturnType<typeof vec>;
+    end: ReturnType<typeof vec>;
+  } => {
     switch (direction) {
       case "horizontal":
         return { start: vec(0, height / 2), end: vec(width, height / 2) };
