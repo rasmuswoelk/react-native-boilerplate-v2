@@ -1,35 +1,12 @@
-import { Box, BoxProps } from "@/lib/components/Box";
+import { Box } from "@/lib/components/Box";
+import { Card } from "@/lib/components/Card";
 import { Container } from "@/lib/components/Container";
 import { Stack } from "@/lib/components/Stack";
 import { Typography } from "@/lib/components/Typography";
 import { createStyles, useStyles } from "@/lib/theme/hooks/useStyles";
 import { useTheme } from "@/lib/theme/hooks/useTheme";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { ScrollView } from "react-native";
-
-const Card: FC<BoxProps & { title?: ReactNode }> = ({
-  title,
-  children,
-  ...props
-}) => {
-  const styles = useStyles(stylesDefinition);
-
-  return (
-    <Box style={styles.card} {...props}>
-      {title ? (
-        <Typography
-          style={styles.cardTitle}
-          variant="body"
-          fontWeight="black"
-          marginBottom="md"
-        >
-          {title}
-        </Typography>
-      ) : null}
-      {children}
-    </Box>
-  );
-};
 
 const ColorSwatch: FC<{
   color: string;
@@ -128,14 +105,6 @@ export const ColorsScreen = () => {
 };
 
 const stylesDefinition = createStyles(({ theme }) => ({
-  card: {
-    padding: theme.spacing.md,
-    backgroundColor: theme.colors.gray[200],
-    borderRadius: theme.borderRadius.md,
-  },
-  cardTitle: {
-    color: theme.colors.gray[600],
-  },
   colorSwatchContainer: {
     alignItems: "center",
     minWidth: 80,

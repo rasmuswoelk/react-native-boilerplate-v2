@@ -12,31 +12,58 @@ import {
 } from "@/lib/theme/utils/createSpacingProps";
 import omit from "lodash/omit";
 import { useMemo } from "react";
-import { StyleProp, View, ViewProps, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  Text,
+  TextProps,
+  TextStyle,
+  View,
+  ViewProps,
+  ViewStyle,
+} from "react-native";
 
-export type BoxProps = ViewProps &
-  SpacingProps & {
-    color?: ColorPath;
-    backgroundColor?: ColorPath;
-    borderRadius?: BorderRadiusPath;
+type BoxBaseProps = {
+  color?: ColorPath;
+  backgroundColor?: ColorPath;
+  borderRadius?: BorderRadiusPath;
+};
+
+type BoxAsViewProps = ViewProps &
+  SpacingProps &
+  BoxBaseProps & {
+    as?: typeof View;
+    style?: StyleProp<ViewStyle>;
   };
 
-export const Box = ({
-  children,
-  color,
-  backgroundColor,
-  borderRadius,
-  style,
-  ...rest
-}: BoxProps) => {
+type BoxAsTextProps = TextProps &
+  SpacingProps &
+  BoxBaseProps & {
+    as: typeof Text;
+    style?: StyleProp<TextStyle>;
+  };
+
+export type BoxProps = BoxAsViewProps | BoxAsTextProps;
+
+export const Box = (props: BoxProps) => {
+  const {
+    children,
+    color,
+    backgroundColor,
+    borderRadius,
+    style,
+    as: Component = View,
+    ...rest
+  } = props;
+
   const { theme } = useTheme();
-  const viewProps = useMemo(
+  const componentProps = useMemo(
     () =>
       omit(rest, [
         ...spacingStyleProperties,
         "color",
         "backgroundColor",
         "borderRadius",
+        "as",
       ]),
     [rest]
   );
@@ -58,9 +85,7 @@ export const Box = ({
       : undefined;
   }, [borderRadius, theme.borderRadius]);
 
-  console.log(resolvedColor, resolvedBackgroundColor);
-
-  const styles: StyleProp<ViewStyle> = useMemo(
+  const styles = useMemo(
     () => [
       {
         ...(resolvedColor && { color: resolvedColor }),
@@ -81,8 +106,22 @@ export const Box = ({
     ]
   );
 
+  if (Component === Text) {
+    return (
+      <Text
+        {...(componentProps as TextProps)}
+        style={styles as StyleProp<TextStyle>}
+      >
+        {children}
+      </Text>
+    );
+  }
+
   return (
-    <View {...viewProps} style={styles}>
+    <View
+      {...(componentProps as ViewProps)}
+      style={styles as StyleProp<ViewStyle>}
+    >
       {children}
     </View>
   );

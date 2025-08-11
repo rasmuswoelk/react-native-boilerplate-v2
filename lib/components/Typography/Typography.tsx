@@ -1,3 +1,4 @@
+import { Box, BoxProps } from "@/lib/components/Box";
 import { useTheme } from "@/lib/theme/hooks/useTheme";
 import {
   omitSpacingProps,
@@ -6,10 +7,11 @@ import {
 } from "@/lib/theme/utils/createSpacingProps";
 import { typography } from "@/lib/theme/variables/typography";
 import { useMemo } from "react";
-import { Text, TextProps, TextStyle } from "react-native";
+import { StyleProp, Text, TextProps, TextStyle } from "react-native";
 
-export type TypographyProps = TextProps &
-  SpacingProps & {
+export type TypographyProps = Omit<BoxProps, "as"> &
+  SpacingProps &
+  Pick<TextProps, "numberOfLines"> & {
     variant?: keyof typeof typography.variant;
     fontWeight?: keyof typeof typography.fontWeight;
   };
@@ -27,7 +29,6 @@ export const Typography = ({
   const styles = useMemo(
     () =>
       [
-        { color: theme.colors.figure },
         variant && theme.typography.variant[variant],
         fontWeight && { fontWeight: theme.typography.fontWeight[fontWeight] },
         spacingStyles,
@@ -36,5 +37,12 @@ export const Typography = ({
     [variant, fontWeight, style]
   );
 
-  return <Text {...textProps} style={styles} />;
+  return (
+    <Box
+      color="figure"
+      as={Text}
+      {...textProps}
+      style={styles as StyleProp<TextStyle>}
+    />
+  );
 };

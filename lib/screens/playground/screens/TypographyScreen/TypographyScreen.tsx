@@ -1,46 +1,14 @@
-import { Box, BoxProps } from "@/lib/components/Box";
+import { Card } from "@/lib/components/Card";
 import { Container } from "@/lib/components/Container";
 import { Stack } from "@/lib/components/Stack";
 import { Typography } from "@/lib/components/Typography";
-import { createStyles, useStyles } from "@/lib/theme/hooks/useStyles";
 import { useTheme } from "@/lib/theme/hooks/useTheme";
 import { getLineHeight } from "@/lib/theme/utils/getLineHeight";
-import { FC, ReactNode } from "react";
 import { ScrollView } from "react-native";
 
 const MAP_VARIANT_TO_TEXT = {
   paragraph:
     "Paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-};
-
-const Card: FC<BoxProps & { title?: ReactNode }> = ({
-  title,
-  children,
-  ...props
-}) => {
-  const styles = useStyles(stylesDefinition);
-
-  return (
-    <Box
-      style={styles.card}
-      {...props}
-      backgroundColor="gray.200"
-      padding="md"
-      borderRadius="sm"
-    >
-      {title ? (
-        <Typography
-          style={styles.cardTitle}
-          variant="body"
-          fontWeight="black"
-          marginBottom="md"
-        >
-          {title}
-        </Typography>
-      ) : null}
-      {children}
-    </Box>
-  );
 };
 
 export const TypographyScreen = () => {
@@ -100,10 +68,3 @@ export const TypographyScreen = () => {
     </ScrollView>
   );
 };
-
-const stylesDefinition = createStyles(({ theme }) => ({
-  card: {},
-  cardTitle: {
-    color: theme.colors.gray[600],
-  },
-}));
