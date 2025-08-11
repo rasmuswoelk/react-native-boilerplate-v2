@@ -37,6 +37,16 @@ const PlaygroundLayout = () => {
           ),
         }}
       />
+      <Tabs.Screen
+        name="colors"
+        options={{
+          title: "Colors",
+          headerTitle: "Colors",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="paintpalette.fill" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 };
