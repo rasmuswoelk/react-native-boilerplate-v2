@@ -1509,6 +1509,32 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-skia (2.2.3):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-callinvoker
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - react-native-webview (13.13.5):
     - DoubleConversion
     - glog
@@ -2054,9 +2080,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - SDWebImage (5.21.0):
-    - SDWebImage/Core (= 5.21.0)
-  - SDWebImage/Core (5.21.0)
+  - SDWebImage (5.21.1):
+    - SDWebImage/Core (= 5.21.1)
+  - SDWebImage/Core (5.21.1)
   - SDWebImageAVIFCoder (0.11.0):
     - libavif/core (>= 0.11.0)
     - SDWebImage (~> 5.10)
@@ -2126,6 +2152,7 @@ DEPENDENCIES:
   - "React-Mapbuffer (from `../node_modules/.pnpm/react-native@0.79.5_@babel+core@7.28.0_@react-native-community+cli@20.0.0_typescript@5.8.3__@_7kxjklmc3bgh72lpxscb4dwage/node_modules/react-native/ReactCommon`)"
   - "React-microtasksnativemodule (from `../node_modules/.pnpm/react-native@0.79.5_@babel+core@7.28.0_@react-native-community+cli@20.0.0_typescript@5.8.3__@_7kxjklmc3bgh72lpxscb4dwage/node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
   - react-native-webview (from `../node_modules/react-native-webview`)
   - "React-NativeModulesApple (from `../node_modules/.pnpm/react-native@0.79.5_@babel+core@7.28.0_@react-native-community+cli@20.0.0_typescript@5.8.3__@_7kxjklmc3bgh72lpxscb4dwage/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)"
   - "React-oscompat (from `../node_modules/.pnpm/react-native@0.79.5_@babel+core@7.28.0_@react-native-community+cli@20.0.0_typescript@5.8.3__@_7kxjklmc3bgh72lpxscb4dwage/node_modules/react-native/ReactCommon/oscompat`)"
@@ -2286,6 +2313,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/react-native@0.79.5_@babel+core@7.28.0_@react-native-community+cli@20.0.0_typescript@5.8.3__@_7kxjklmc3bgh72lpxscb4dwage/node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-skia:
+    :path: "../node_modules/@shopify/react-native-skia"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-NativeModulesApple:
@@ -2418,6 +2447,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 5b4959cbd91e7e8fae42ab0f4b7c25b86fd139a1
   React-microtasksnativemodule: 1695ab137281dd03de967b7bbeb4e392601f6432
   react-native-safe-area-context: 00d03dc688ba86664be66f9e3f203fc7d747d899
+  react-native-skia: 73e36c68eee6491d539b93d2e02e70bbd01edfe0
   react-native-webview: cde150463e7caa49b316b0ed1871e7ef8193bef4
   React-NativeModulesApple: 3ecc647742d33ad617bd2805902e3f91f2b3008f
   React-oscompat: 0592889a9fcf0eacb205532028e4a364e22907dd
@@ -2453,7 +2483,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: ccf4105b125002bd88e39d2a1f2b7e6001bcdf34
   RNReanimated: 37b3349592d3e044b3cd98d37f6b5c0567e64a97
   RNScreens: c2e3cc506212228c607b4785b315205e28acbf0f
-  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
+  SDWebImage: f29024626962457f3470184232766516dee8dfea
   SDWebImageAVIFCoder: 00310d246aab3232ce77f1d8f0076f8c4b021d90
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380

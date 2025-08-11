@@ -47,6 +47,20 @@ const PlaygroundLayout = () => {
           ),
         }}
       />
+      <Tabs.Screen
+        name="gradients"
+        options={{
+          title: "Gradients",
+          headerTitle: "Gradients",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="rectangle.fill.on.rectangle.angled.fill"
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 };

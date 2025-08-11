@@ -74,6 +74,10 @@ const variant = {
     fontSize: fontSize.sm,
     lineHeight: getLineHeight(fontSize.sm, lineHeight.sm),
   },
+  label: {
+    fontSize: fontSize.sm,
+    lineHeight: getLineHeight(fontSize.sm, lineHeight.sm),
+  },
 } as const;
 
 export const typography = {
