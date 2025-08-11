@@ -41,7 +41,7 @@ export const SpacingScreen = () => {
             marginBottom="md"
           >
             <Typography variant="caption" marginBottom="xs">
-              marginBottom="xs" (4px)
+              {`marginBottom="xs" (4px)`}
             </Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
@@ -64,7 +64,7 @@ export const SpacingScreen = () => {
             marginBottom="md"
           >
             <Typography variant="caption" marginBottom="xs">
-              marginBottom="sm" (8px)
+              {`marginBottom="sm" (8px)`}
             </Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
@@ -87,7 +87,7 @@ export const SpacingScreen = () => {
             marginBottom="md"
           >
             <Typography variant="caption" marginBottom="xs">
-              marginBottom="md" (16px)
+              {`marginBottom="md" (16px)`}
             </Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
@@ -110,7 +110,7 @@ export const SpacingScreen = () => {
             marginBottom="md"
           >
             <Typography variant="caption" marginBottom="xs">
-              marginBottom="lg" (24px)
+              {`marginBottom="lg" (24px)`}
             </Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
@@ -136,7 +136,7 @@ export const SpacingScreen = () => {
             style={{ backgroundColor: theme.colors.gray[200] }}
             marginBottom="md"
           >
-            <Typography variant="caption">padding="xs" (4px)</Typography>
+            <Typography variant="caption">{`padding="xs" (4px)`}</Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
               padding="xs"
@@ -149,7 +149,7 @@ export const SpacingScreen = () => {
             style={{ backgroundColor: theme.colors.gray[200] }}
             marginBottom="md"
           >
-            <Typography variant="caption">padding="sm" (8px)</Typography>
+            <Typography variant="caption">{`padding="sm" (8px)`}</Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
               padding="sm"
@@ -162,7 +162,7 @@ export const SpacingScreen = () => {
             style={{ backgroundColor: theme.colors.gray[200] }}
             marginBottom="md"
           >
-            <Typography variant="caption">padding="md" (16px)</Typography>
+            <Typography variant="caption">{`padding="md" (16px)`}</Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
               padding="md"
@@ -175,7 +175,7 @@ export const SpacingScreen = () => {
             style={{ backgroundColor: theme.colors.gray[200] }}
             marginBottom="md"
           >
-            <Typography variant="caption">padding="lg" (24px)</Typography>
+            <Typography variant="caption">{`padding="lg" (24px)`}</Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
               padding="lg"
@@ -188,7 +188,7 @@ export const SpacingScreen = () => {
             style={{ backgroundColor: theme.colors.gray[200] }}
             marginBottom="md"
           >
-            <Typography variant="caption">padding="xl" (32px)</Typography>
+            <Typography variant="caption">{`padding="xl" (32px)`}</Typography>
             <Box
               style={{ backgroundColor: theme.colors.gray[200] }}
               padding="xl"

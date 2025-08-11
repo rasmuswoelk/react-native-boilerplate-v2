@@ -12,19 +12,19 @@ export const IndexScreen = () => {
       {/* Demonstrating spacing utility usage */}
       <Box marginTop="lg" paddingHorizontal="md" style={styles.demoBox}>
         <Text style={styles.demoText}>
-          Box with marginTop="lg" and paddingHorizontal="md"
+          {`Box with marginTop="lg" and paddingHorizontal="md"`}
         </Text>
       </Box>
 
       <Box marginVertical="md" paddingVertical="sm" style={styles.demoBox}>
         <Text style={styles.demoText}>
-          Box with marginVertical="md" and paddingVertical="sm"
+          {`Box with marginVertical="md" and paddingVertical="sm"`}
         </Text>
       </Box>
 
       <Box margin="xl" padding="lg" style={styles.demoBox}>
         <Text style={styles.demoText}>
-          Box with margin="xl" and padding="lg"
+          {`Box with margin="xl" and padding="lg"`}
         </Text>
       </Box>
     </View>

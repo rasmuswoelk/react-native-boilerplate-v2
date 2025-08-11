@@ -34,7 +34,7 @@ export const Typography = ({
         spacingStyles,
         style,
       ].filter(Boolean),
-    [variant, fontWeight, style]
+    [variant, fontWeight, spacingStyles, style, theme.typography]
   );
 
   return (
