@@ -1,44 +1,84 @@
 import { useTheme } from "@/lib/theme/hooks/useTheme";
 import {
-  omitSpacingProps,
+  BorderRadiusPath,
+  ColorPath,
+  getBorderRadiusFromPath,
+  getColorFromPath,
+} from "@/lib/theme/utils/colorTypes";
+import {
   SpacingProps,
+  spacingStyleProperties,
   useGetSpacingStylesByComponentProps,
 } from "@/lib/theme/utils/createSpacingProps";
-import { spacing } from "@/lib/theme/variables/spacing";
+import omit from "lodash/omit";
 import { useMemo } from "react";
 import { StyleProp, View, ViewProps, ViewStyle } from "react-native";
 
 export type BoxProps = ViewProps &
   SpacingProps & {
-    gutter?: keyof typeof spacing | boolean;
+    color?: ColorPath;
+    backgroundColor?: ColorPath;
+    borderRadius?: BorderRadiusPath;
   };
 
-export const Box = ({ children, gutter, style, ...rest }: BoxProps) => {
+export const Box = ({
+  children,
+  color,
+  backgroundColor,
+  borderRadius,
+  style,
+  ...rest
+}: BoxProps) => {
   const { theme } = useTheme();
-  const viewProps = useMemo(() => omitSpacingProps(rest), [rest]);
+  const viewProps = useMemo(
+    () =>
+      omit(rest, [
+        ...spacingStyleProperties,
+        "color",
+        "backgroundColor",
+        "borderRadius",
+      ]),
+    [rest]
+  );
   const spacingStyles = useGetSpacingStylesByComponentProps(rest);
 
-  const gutterValue = useMemo(() => {
-    if (gutter === true) {
-      return theme.spacing.gutter;
-    }
+  const resolvedColor = useMemo(() => {
+    return color ? getColorFromPath(theme.colors, color) : undefined;
+  }, [color, theme.colors]);
 
-    if (!gutter) {
-      return undefined;
-    }
+  const resolvedBackgroundColor = useMemo(() => {
+    return backgroundColor
+      ? getColorFromPath(theme.colors, backgroundColor)
+      : undefined;
+  }, [backgroundColor, theme.colors]);
 
-    return theme.spacing[gutter];
-  }, [gutter, theme.spacing]);
+  const resolvedBorderRadius = useMemo(() => {
+    return borderRadius
+      ? getBorderRadiusFromPath(theme.borderRadius, borderRadius)
+      : undefined;
+  }, [borderRadius, theme.borderRadius]);
+
+  console.log(resolvedColor, resolvedBackgroundColor);
 
   const styles: StyleProp<ViewStyle> = useMemo(
     () => [
       {
-        paddingHorizontal: gutterValue,
+        ...(resolvedColor && { color: resolvedColor }),
+        ...(resolvedBackgroundColor && {
+          backgroundColor: resolvedBackgroundColor,
+        }),
+        ...(resolvedBorderRadius && { borderRadius: resolvedBorderRadius }),
       },
       spacingStyles,
       style,
     ],
-    [gutterValue, spacingStyles, style]
+    [
+      resolvedColor,
+      resolvedBackgroundColor,
+      resolvedBorderRadius,
+      spacingStyles,
+      style,
+    ]
   );
 
   return (

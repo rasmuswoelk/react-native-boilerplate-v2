@@ -21,7 +21,13 @@ const Card: FC<BoxProps & { title?: ReactNode }> = ({
   const styles = useStyles(stylesDefinition);
 
   return (
-    <Box style={styles.card} {...props}>
+    <Box
+      style={styles.card}
+      {...props}
+      backgroundColor="gray.200"
+      padding="md"
+      borderRadius="sm"
+    >
       {title ? (
         <Typography
           style={styles.cardTitle}
@@ -96,11 +102,7 @@ export const TypographyScreen = () => {
 };
 
 const stylesDefinition = createStyles(({ theme }) => ({
-  card: {
-    padding: theme.spacing.md,
-    backgroundColor: theme.colors.gray[200],
-    borderRadius: theme.borderRadius.md,
-  },
+  card: {},
   cardTitle: {
     color: theme.colors.gray[600],
   },

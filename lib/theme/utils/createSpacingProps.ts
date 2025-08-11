@@ -6,7 +6,7 @@ import { useTheme } from "../hooks/useTheme";
 import { SpacingKeyType, SpacingType } from "../variables/spacing";
 
 // Define all possible spacing style properties
-const spacingStyleProperties = [
+export const spacingStyleProperties = [
   "margin",
   "marginTop",
   "marginRight",

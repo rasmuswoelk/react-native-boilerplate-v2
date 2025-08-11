@@ -1,7 +1,7 @@
 import { BaseTheme, baseTheme } from "@/lib/theme/theme";
 
 // App-specific theme extension that allows overriding default theme values
-const appThemeExtension = {
+const customTheme = {
   colors: {
     primary: "#000000",
     secondary: "#666666",
@@ -18,6 +18,8 @@ const appThemeExtension = {
       500: "#0ea5e9", // primary blue
       600: "#0284c7",
       700: "#0369a1", // darkest blue
+      800: "#004d7a",
+      900: "#002f44",
     },
     // You can also override other base theme colors like:
     // red: { 100: "#custom", 200: "#custom", ... },
@@ -26,33 +28,20 @@ const appThemeExtension = {
   },
 } as const;
 
+type CustomTheme = typeof customTheme;
+
 export const theme = {
   ...baseTheme,
   colors: {
     ...baseTheme.colors,
-    ...appThemeExtension.colors,
+    ...customTheme.colors,
   },
 };
 
 declare global {
   namespace Theme {
     interface AppTheme extends Omit<BaseTheme, "colors"> {
-      colors: Omit<BaseTheme["colors"], "brand"> & {
-        primary: string;
-        secondary: string;
-        background: string;
-        text: string;
-        border: string;
-        brand: {
-          100: string;
-          200: string;
-          300: string;
-          400: string;
-          500: string;
-          600: string;
-          700: string;
-        };
-      };
+      colors: Omit<BaseTheme["colors"], "brand"> & CustomTheme["colors"];
     }
   }
 }
