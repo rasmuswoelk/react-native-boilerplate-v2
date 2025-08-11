@@ -17,7 +17,7 @@ export type StackProps = ViewProps &
 export const Stack = ({
   children,
   direction = "vertical",
-  gap,
+  gap = "md",
   style,
   ...rest
 }: StackProps) => {
