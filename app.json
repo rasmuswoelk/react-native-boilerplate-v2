@@ -7,7 +7,6 @@
     "icon": "./src/assets/images/icon.png",
     "scheme": "reactnativeboilerplate",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.rasmuswoelk.react-native-boilerplate"
@@ -17,7 +16,6 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
       "package": "com.rasmuswoelk.reactnativeboilerplate"
     },
     "web": {
@@ -35,7 +33,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
