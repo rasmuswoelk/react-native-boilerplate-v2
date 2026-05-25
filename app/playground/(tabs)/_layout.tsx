@@ -1,11 +1,18 @@
 import { IconSymbol } from "@/app-example/components/ui/IconSymbol";
 import { Tabs } from "expo-router";
+import { Platform } from "react-native";
+import TabBarBackground from "../components/TabBarBackground";
 
 const PlaygroundLayout = () => {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarBackground: TabBarBackground,
+        tabBarStyle: Platform.select({
+          ios: { position: "absolute" },
+          default: {},
+        }),
       }}
     >
       <Tabs.Screen
