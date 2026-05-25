@@ -1,74 +1,29 @@
-import { IconSymbol } from "@/app-example/components/ui/IconSymbol";
-import { Tabs } from "expo-router";
-import { Platform } from "react-native";
-import TabBarBackground from "../components/TabBarBackground";
+import { NativeTabs } from "expo-router/unstable-native-tabs";
 
 const PlaygroundLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: { position: "absolute" },
-          default: {},
-        }),
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="typography"
-        options={{
-          title: "Typography",
-          headerTitle: "Typography",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="text.book.closed.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="spacing"
-        options={{
-          title: "Spacing",
-          headerTitle: "Spacing",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="square.grid.3x3.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="colors"
-        options={{
-          title: "Colors",
-          headerTitle: "Colors",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paintpalette.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="gradients"
-        options={{
-          title: "Gradients",
-          headerTitle: "Gradients",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol
-              size={28}
-              name="rectangle.fill.on.rectangle.angled.fill"
-              color={color}
-            />
-          ),
-        }}
-      />
-    </Tabs>
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="typography">
+        <NativeTabs.Trigger.Label>Typography</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="text.book.closed.fill" md="text_fields" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="spacing">
+        <NativeTabs.Trigger.Label>Spacing</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="square.grid.3x3.fill" md="grid_view" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="colors">
+        <NativeTabs.Trigger.Label>Colors</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="paintpalette.fill" md="palette" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="gradients">
+        <NativeTabs.Trigger.Label>Gradients</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="rectangle.fill.on.rectangle.angled.fill" md="gradient" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 };
 
