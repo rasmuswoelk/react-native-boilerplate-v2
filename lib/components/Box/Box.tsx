@@ -1,4 +1,4 @@
-import { useTheme } from "@/lib/theme/hooks/useTheme";
+import { useUnistyles } from "react-native-unistyles";
 import {
   BorderRadiusPath,
   ColorPath,
@@ -55,7 +55,7 @@ export const Box = (props: BoxProps) => {
     ...rest
   } = props;
 
-  const { theme } = useTheme();
+  const { theme } = useUnistyles();
   const componentProps = useMemo(
     () =>
       omit(rest, [
