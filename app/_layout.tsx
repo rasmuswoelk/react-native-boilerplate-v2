@@ -1,6 +1,7 @@
-import { AppLayout } from "@/src/layouts/AppLayout";
-import { Stack } from "expo-router";
-import "react-native-reanimated";
+import '@/src/unistyles'
+import { AppLayout } from '@/src/layouts/AppLayout'
+import { Stack } from 'expo-router'
+import 'react-native-reanimated'
 
 export default function RootLayout() {
   return (
@@ -10,5 +11,5 @@ export default function RootLayout() {
         <Stack.Screen name="playground" options={{ headerShown: false }} />
       </Stack>
     </AppLayout>
-  );
+  )
 }
