@@ -1,4 +1,4 @@
-import { useTheme } from "@/lib/theme/hooks/useTheme";
+import { useUnistyles } from "react-native-unistyles";
 import {
   omitSpacingProps,
   SpacingProps,
@@ -21,7 +21,7 @@ export const Stack = ({
   style,
   ...rest
 }: StackProps) => {
-  const { theme } = useTheme();
+  const { theme } = useUnistyles();
   const viewProps = useMemo(() => omitSpacingProps(rest), [rest]);
   const spacingStyles = useGetSpacingStylesByComponentProps(rest);
 
