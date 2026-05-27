@@ -36,7 +36,7 @@ Migrate the project's styling infrastructure from the custom `ThemeProvider` / `
 
 - `app.json` — add `"react-native-unistyles"` to `plugins`
 - `app/_layout.tsx` — import `src/unistyles.ts` as side-effect, remove ThemeProvider
-- `src/layouts/AppLayout/AppLayout.tsx` — remove ThemeProvider wrapper
+- `src/layouts/AppLayout/AppLayout.tsx` — remove ThemeProvider wrapper; font loading (`useFonts`) stays unchanged; remove `theme` import from `src/theme/index.ts`
 - All components using `useTheme()` → `useUnistyles()`
 - All components using `useStyles(createStyles(...))` → module-level `StyleSheet.create(theme => ({...}))`
 
