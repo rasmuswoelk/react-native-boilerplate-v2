@@ -127,6 +127,29 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
+  - NitroModules (0.35.7):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - RCTDeprecation (0.85.3)
   - RCTRequired (0.85.3)
   - RCTSwiftUI (0.85.3)
@@ -2262,6 +2285,29 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
+  - Unistyles (3.2.5):
+    - hermes-engine
+    - NitroModules
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -2291,6 +2337,7 @@ DEPENDENCIES:
   - "FBLazyVector (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/Libraries/FBLazyVector`)"
   - "hermes-engine (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)"
   - "lottie-react-native (from `../node_modules/.pnpm/lottie-react-native@7.3.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-communit_08908fecabc93a0f36d9ebdaeffb6214/node_modules/lottie-react-native`)"
+  - "NitroModules (from `../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_33dd1979fc969e8b9def8bbe12196215/node_modules/react-native-nitro-modules`)"
   - "RCTDeprecation (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)"
   - "RCTRequired (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/Libraries/Required`)"
   - "RCTSwiftUI (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/ReactApple/RCTSwiftUI`)"
@@ -2371,6 +2418,7 @@ DEPENDENCIES:
   - "RNReanimated (from `../node_modules/.pnpm/react-native-reanimated@4.3.1_react-native-worklets@0.8.3_@babel+core@7.29.7_@react-nat_cb749688a1aa1d6ebadf9d3b09a4438c/node_modules/react-native-reanimated`)"
   - "RNScreens (from `../node_modules/.pnpm/react-native-screens@4.25.2_react-native@0.85.3_@babel+core@7.29.7_@react-native-commun_cc4f433aaefeda836b7dc63f34394809/node_modules/react-native-screens`)"
   - "RNWorklets (from `../node_modules/.pnpm/react-native-worklets@0.8.3_@babel+core@7.29.7_@react-native+metro-config@0.85.3_@babel_6cd3922b5d5a24700fe2c964f0251ae8/node_modules/react-native-worklets`)"
+  - "Unistyles (from `../node_modules/.pnpm/react-native-unistyles@3.2.5_8e6a7afa19b749d30f4c79d8464f2858/node_modules/react-native-unistyles`)"
   - "Yoga (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/ReactCommon/yoga`)"
 
 SPEC REPOS:
@@ -2431,6 +2479,8 @@ EXTERNAL SOURCES:
     :tag: hermes-v250829098.0.10
   lottie-react-native:
     :path: "../node_modules/.pnpm/lottie-react-native@7.3.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-communit_08908fecabc93a0f36d9ebdaeffb6214/node_modules/lottie-react-native"
+  NitroModules:
+    :path: "../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_33dd1979fc969e8b9def8bbe12196215/node_modules/react-native-nitro-modules"
   RCTDeprecation:
     :path: "../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation"
   RCTRequired:
@@ -2589,6 +2639,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/react-native-screens@4.25.2_react-native@0.85.3_@babel+core@7.29.7_@react-native-commun_cc4f433aaefeda836b7dc63f34394809/node_modules/react-native-screens"
   RNWorklets:
     :path: "../node_modules/.pnpm/react-native-worklets@0.8.3_@babel+core@7.29.7_@react-native+metro-config@0.85.3_@babel_6cd3922b5d5a24700fe2c964f0251ae8/node_modules/react-native-worklets"
+  Unistyles:
+    :path: "../node_modules/.pnpm/react-native-unistyles@3.2.5_8e6a7afa19b749d30f4c79d8464f2858/node_modules/react-native-unistyles"
   Yoga:
     :path: "../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._102f653994ea2be5fad805dc432f70ad/node_modules/react-native/ReactCommon/yoga"
 
@@ -2620,6 +2672,7 @@ SPEC CHECKSUMS:
   hermes-engine: f35037256b618c550489108cf50a589d5e59713a
   lottie-ios: 8f959969761e9c45d70353667d00af0e5b9cadb3
   lottie-react-native: 116398d27ee6f92ad2adb51f581da7ed30cf2b86
+  NitroModules: ecbafa6d6e6297ff1c240b40ee027aea48ec4bf4
   RCTDeprecation: a4c521821fab57cbb125b36effe84d897d0dfa12
   RCTRequired: 9f3a7e5645d4bc3f551593de7550bb66ab6e42bc
   RCTSwiftUI: 239ed2eb9e73de5a6f518810630f0c95e01c8702
@@ -2699,6 +2752,7 @@ SPEC CHECKSUMS:
   RNReanimated: 7a030bb56a5635dc1e581662f3a52afcf1ada19d
   RNScreens: 9b2e552ea56792a85c4efcc279edd61d9014be1c
   RNWorklets: ad8962daa2ef147108e3257cf3a5dbbd84bdf84b
+  Unistyles: ed794332edb4d9047b183bdf3180028a70220a6a
   Yoga: 77dfa8673de2874e1855002ae59c68b8be9b007b
 
 PODFILE CHECKSUM: a55564610acdacc72d83207dcf804debb0734443
