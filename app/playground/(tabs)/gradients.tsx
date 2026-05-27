@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { View, ScrollView, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Container } from "@/lib/components/Container";
-import { Typography } from "@/lib/components/Typography";
-import { Gradient, AnimatedGradient } from "@/lib/components/Gradient";
-import { useTheme } from "@/lib/theme/hooks/useTheme";
+import React, { useState } from 'react'
+import { View, ScrollView, Pressable } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Container } from '@/lib/components/Container'
+import { Typography } from '@/lib/components/Typography'
+import { Gradient, AnimatedGradient } from '@/lib/components/Gradient'
+import { useUnistyles } from 'react-native-unistyles'
 
 const GRADIENT_EXAMPLES = [
   {
-    title: "Static Horizontal",
+    title: 'Static Horizontal',
     component: (
       <Gradient
         width={300}
         height={150}
-        colors={["#ff6b6b", "#4ecdc4"]}
+        colors={['#ff6b6b', '#4ecdc4']}
         direction="horizontal"
         autoGenerate={false}
       />
     ),
   },
   {
-    title: "Animated Diagonal Shift",
+    title: 'Animated Diagonal Shift',
     component: (
       <AnimatedGradient
         width={300}
         height={150}
-        colors={["#667eea", "#764ba2", "#f093fb"]}
+        colors={['#667eea', '#764ba2', '#f093fb']}
         direction="diagonal"
         animationType="shift"
         speed="medium"
@@ -33,12 +33,12 @@ const GRADIENT_EXAMPLES = [
     ),
   },
   {
-    title: "Animated Wave",
+    title: 'Animated Wave',
     component: (
       <AnimatedGradient
         width={300}
         height={150}
-        colors={["#f093fb", "#f5576c", "#4facfe"]}
+        colors={['#f093fb', '#f5576c', '#4facfe']}
         direction="vertical"
         animationType="wave"
         speed="slow"
@@ -46,12 +46,12 @@ const GRADIENT_EXAMPLES = [
     ),
   },
   {
-    title: "Animated Breathe",
+    title: 'Animated Breathe',
     component: (
       <AnimatedGradient
         width={300}
         height={150}
-        colors={["#43e97b", "#38f9d7"]}
+        colors={['#43e97b', '#38f9d7']}
         direction="radial"
         animationType="breathe"
         speed="slow"
@@ -59,23 +59,23 @@ const GRADIENT_EXAMPLES = [
     ),
   },
   {
-    title: "Rotating Gradient",
+    title: 'Rotating Gradient',
     component: (
       <AnimatedGradient
         width={300}
         height={150}
-        colors={["#fa709a", "#fee140", "#fa709a"]}
+        colors={['#fa709a', '#fee140', '#fa709a']}
         direction="diagonal"
         animationType="rotate"
         speed="medium"
       />
     ),
   },
-];
+]
 
 export default function GradientsScreen() {
-  const { theme } = useTheme();
-  const [pausedAnimations, setPausedAnimations] = useState(false);
+  const { theme } = useUnistyles()
+  const [pausedAnimations, setPausedAnimations] = useState(false)
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
@@ -93,12 +93,12 @@ export default function GradientsScreen() {
               paddingHorizontal: theme.spacing.md,
               paddingVertical: theme.spacing.sm,
               borderRadius: 8,
-              alignSelf: "flex-start",
+              alignSelf: 'flex-start',
             }}
             onPress={() => setPausedAnimations(!pausedAnimations)}
           >
             <Typography color="white" fontWeight="medium">
-              {pausedAnimations ? "Resume Animations" : "Pause Animations"}
+              {pausedAnimations ? 'Resume Animations' : 'Pause Animations'}
             </Typography>
           </Pressable>
         </View>
@@ -115,29 +115,17 @@ export default function GradientsScreen() {
                 backgroundColor: theme.colors.white,
                 borderRadius: 12,
                 padding: theme.spacing.md,
-                shadowColor: "#000",
+                shadowColor: '#000',
                 shadowOffset: { width: 0, height: 2 },
                 shadowOpacity: 0.1,
                 shadowRadius: 4,
                 elevation: 3,
               }}
             >
-              <Typography
-                variant="h3"
-                fontWeight="bold"
-                marginBottom="md"
-                color="gray.700"
-              >
+              <Typography variant="h3" fontWeight="bold" marginBottom="md" color="gray.700">
                 {example.title}
               </Typography>
-
-              <View
-                style={{
-                  borderRadius: 8,
-                  overflow: "hidden",
-                  alignItems: "center",
-                }}
-              >
+              <View style={{ borderRadius: 8, overflow: 'hidden', alignItems: 'center' }}>
                 {React.cloneElement(example.component, {
                   paused:
                     example.component.type === AnimatedGradient
@@ -150,5 +138,5 @@ export default function GradientsScreen() {
         </ScrollView>
       </Container>
     </SafeAreaView>
-  );
+  )
 }

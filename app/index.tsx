@@ -1,44 +1,44 @@
-import { Container } from "@/lib/components/Container";
-import { Typography } from "@/lib/components/Typography";
-import { useTheme } from "@/lib/theme/hooks/useTheme";
-import { router } from "expo-router";
-import { Pressable, useWindowDimensions, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useEffect, useRef } from "react";
-import { AnimatedGradient } from "@/lib/components/Gradient";
-import { FadeIn } from "@/lib/components/FadeIn";
-import { LottieView } from "@/lib/components/LottieView";
-import animation from "@/src/assets/animations/3d-shape-animation.json";
+import { Container } from '@/lib/components/Container'
+import { Typography } from '@/lib/components/Typography'
+import { useUnistyles } from 'react-native-unistyles'
+import { router } from 'expo-router'
+import { Pressable, useWindowDimensions, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import React from 'react'
+import { AnimatedGradient } from '@/lib/components/Gradient'
+import { FadeIn } from '@/lib/components/FadeIn'
+import { LottieView } from '@/lib/components/LottieView'
+import animation from '@/src/assets/animations/3d-shape-animation.json'
 
 export const GradientBackground = () => {
-  const { width, height } = useWindowDimensions();
+  const { width, height } = useWindowDimensions()
 
   return (
     <AnimatedGradient
       width={width}
       height={height}
-      style={{ flex: 1, position: "absolute", inset: 0, zIndex: -1 }}
-      colors={["#ff1c73", "#4b69a2"]}
+      style={{ flex: 1, position: 'absolute', inset: 0, zIndex: -1 }}
+      colors={['#ff1c73', '#4b69a2']}
       direction="random"
       animationType="shift"
       speed="slow"
     />
-  );
-};
+  )
+}
 
 const Animation = () => {
-  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions()
 
   return (
     <View
       style={{
-        height: "100%",
-        position: "absolute",
+        height: '100%',
+        position: 'absolute',
         inset: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
       }}
     >
       <FadeIn delay={100} duration={800}>
@@ -50,45 +50,31 @@ const Animation = () => {
         />
       </FadeIn>
     </View>
-  );
-};
+  )
+}
 
 export default function Index() {
-  const { theme } = useTheme();
+  const { theme } = useUnistyles()
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1, zIndex: 10, position: "relative" }}>
+      <SafeAreaView style={{ flex: 1, zIndex: 10, position: 'relative' }}>
         <Container
           gutter="lg"
           paddingTop="3xl"
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
-          <FadeIn
-            delay={1200}
-            translateY={-20}
-            duration={650}
-            style={{ width: "100%" }}
-          >
-            <Typography
-              color="white"
-              fontSize="5xl"
-              lineHeight={1.2}
-              marginBottom="sm"
-            >
+          <FadeIn delay={1200} translateY={-20} duration={650} style={{ width: '100%' }}>
+            <Typography color="white" fontSize="5xl" lineHeight={1.2} marginBottom="sm">
               <Typography fontWeight="black" color="white">
-                Welcome to{"\n"}
+                Welcome to{'\n'}
               </Typography>
               <Typography fontWeight="regular" color="white" fontStyle="italic">
                 the boilerplate
               </Typography>
             </Typography>
           </FadeIn>
-          <View style={{ marginTop: "auto", width: "100%" }}>
+          <View style={{ marginTop: 'auto', width: '100%' }}>
             <FadeIn delay={1200} translateY={10} duration={600}>
               <Pressable
                 style={{
@@ -96,12 +82,12 @@ export default function Index() {
                   paddingHorizontal: theme.spacing.lg,
                   height: 56,
                   borderRadius: 50,
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
-                onPress={() => router.push("/playground")}
+                onPress={() => router.push('/playground')}
               >
                 <Typography
                   fontSize="lg"
@@ -122,5 +108,5 @@ export default function Index() {
       <GradientBackground />
       <Animation />
     </>
-  );
+  )
 }
