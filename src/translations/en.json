@@ -1,0 +1,40 @@
+{
+  "common": {
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "darkMode": "Dark mode",
+    "language": "Language"
+  },
+  "playground": {
+    "tabs": {
+      "home": "Home",
+      "typography": "Typography",
+      "spacing": "Spacing",
+      "colors": "Colors",
+      "gradients": "Gradients"
+    },
+    "home": {
+      "title": "Welcome to the playground",
+      "greeting": "Hello, {{name}}!",
+      "itemCount_one": "{{count}} item",
+      "itemCount_other": "{{count}} items"
+    },
+    "colors": {
+      "baseColors": "Base Colors",
+      "palette": "{{name}} Palette"
+    },
+    "typography": {
+      "variants": "Variants",
+      "fontSizes": "Font sizes",
+      "fontWeights": "Font weights",
+      "paragraph": "Paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "spacing": {
+      "values": "Spacing Values",
+      "marginExamples": "Margin Examples",
+      "paddingExamples": "Padding Examples"
+    }
+  }
+}

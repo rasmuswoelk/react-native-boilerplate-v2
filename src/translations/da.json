@@ -1,0 +1,40 @@
+{
+  "common": {
+    "back": "Tilbage",
+    "save": "Gem",
+    "cancel": "Annuller",
+    "loading": "Indlæser...",
+    "darkMode": "Mørk tilstand",
+    "language": "Sprog"
+  },
+  "playground": {
+    "tabs": {
+      "home": "Hjem",
+      "typography": "Typografi",
+      "spacing": "Afstand",
+      "colors": "Farver",
+      "gradients": "Gradienter"
+    },
+    "home": {
+      "title": "Velkommen til legepladsen",
+      "greeting": "Hej, {{name}}!",
+      "itemCount_one": "{{count}} element",
+      "itemCount_other": "{{count}} elementer"
+    },
+    "colors": {
+      "baseColors": "Basisfarver",
+      "palette": "{{name}} Palet"
+    },
+    "typography": {
+      "variants": "Varianter",
+      "fontSizes": "Skriftstørrelser",
+      "fontWeights": "Skrifttykkelser",
+      "paragraph": "Afsnit: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "spacing": {
+      "values": "Afstandsværdier",
+      "marginExamples": "Margen Eksempler",
+      "paddingExamples": "Polstring Eksempler"
+    }
+  }
+}
