@@ -6,23 +6,16 @@ import { Typography } from "@/lib/components/Typography";
 import { StyleSheet, useUnistyles } from "react-native-unistyles";
 import { FC } from "react";
 import { ScrollView } from "react-native";
+import { useTranslation } from "@/lib/i18n";
 
 const ColorSwatch: FC<{ color: string; name: string }> = ({ color, name }) => {
   return (
     <Box style={stylesheet.colorSwatchContainer}>
       <Box style={[stylesheet.colorSwatch, { backgroundColor: color }]} />
-      <Typography
-        variant="caption"
-        style={stylesheet.colorName}
-        numberOfLines={1}
-      >
+      <Typography variant="caption" style={stylesheet.colorName} numberOfLines={1}>
         {name}
       </Typography>
-      <Typography
-        variant="caption"
-        style={stylesheet.colorValue}
-        numberOfLines={1}
-      >
+      <Typography variant="caption" style={stylesheet.colorValue} numberOfLines={1}>
         {color}
       </Typography>
     </Box>
@@ -31,6 +24,7 @@ const ColorSwatch: FC<{ color: string; name: string }> = ({ color, name }) => {
 
 export const ColorsScreen = () => {
   const { theme } = useUnistyles();
+  const { t } = useTranslation();
 
   const singleColors = Object.entries(theme.colors).reduce(
     (acc, [key, value]) => {
@@ -54,7 +48,7 @@ export const ColorsScreen = () => {
     <ScrollView style={{ backgroundColor: theme.colors.ground }}>
       <Container paddingBottom="lg" paddingTop="lg">
         <Stack direction="vertical" gap="md">
-          <Card title="Base Colors">
+          <Card title={t('playground.colors.baseColors')}>
             <Stack direction="horizontal" gap="md" style={{ flexWrap: "wrap" }}>
               {Object.entries(singleColors).map(([name, color]) => (
                 <ColorSwatch key={name} color={color} name={name} />
@@ -65,15 +59,11 @@ export const ColorsScreen = () => {
           {Object.entries(colorPalettes).map(([paletteName, palette]) => (
             <Card
               key={paletteName}
-              title={`${
-                paletteName.charAt(0).toUpperCase() + paletteName.slice(1)
-              } Palette`}
+              title={t('playground.colors.palette', {
+                name: paletteName.charAt(0).toUpperCase() + paletteName.slice(1),
+              })}
             >
-              <Stack
-                direction="horizontal"
-                gap="sm"
-                style={{ flexWrap: "wrap" }}
-              >
+              <Stack direction="horizontal" gap="sm" style={{ flexWrap: "wrap" }}>
                 {Object.entries(palette).map(([shade, color]) => (
                   <ColorSwatch
                     key={`${paletteName}-${shade}`}
