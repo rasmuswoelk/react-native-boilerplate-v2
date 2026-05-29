@@ -8,13 +8,13 @@ export type CardProps = BoxProps & {
 
 export const Card: FC<CardProps> = ({ title, children, ...props }) => {
   return (
-    <Box {...props} backgroundColor="gray.200" padding="md" borderRadius="sm">
+    <Box backgroundColor="ground" padding="md" borderRadius="sm" {...props}>
       {title ? (
         <Typography
           variant="body"
           fontWeight="black"
           marginBottom="md"
-          color="gray.700"
+          color="text"
         >
           {title}
         </Typography>

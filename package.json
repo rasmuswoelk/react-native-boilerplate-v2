@@ -8,6 +8,7 @@
     "android": "expo run:android",
     "expo:ios": "expo run:ios",
     "ios": "npx expo run:ios",
+    "ios:alternate-port": "RCT_METRO_PORT=8083 pnpm exec expo run:ios --port 8083",
     "web": "expo start --web",
     "lint": "eslint --max-warnings 0",
     "typecheck": "tsc",

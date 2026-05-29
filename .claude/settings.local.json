@@ -15,7 +15,21 @@
       "Bash(git commit -m ' *)",
       "Bash(xcrun simctl *)",
       "mcp__plugin_context7_context7__resolve-library-id",
-      "mcp__plugin_context7_context7__query-docs"
+      "mcp__plugin_context7_context7__query-docs",
+      "Skill(ios-simulator-skill:ios-simulator-skill)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('expo',{}\\), indent=2\\)\\)\")",
+      "Skill(superpowers:subagent-driven-development)",
+      "Bash(git commit *)",
+      "Bash(pnpm ls *)",
+      "Bash(python3 -c \"import sys, json; d = json.load\\(sys.stdin\\); print\\(json.dumps\\({k: d[k] for k in ['expoPlugin','react-native','codegenConfig','nitro'] if k in d}, indent=2\\)\\)\")",
+      "Bash(git *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:d[k] for k in d if 'plugin' in k.lower\\(\\) or 'expo' in k.lower\\(\\)}, indent=2\\)\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('expo', 'NOT FOUND'\\)\\); print\\(d.get\\('expoPlugin', 'NOT FOUND'\\)\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if k in ['expo','expoPlugin','plugin','main','keywords']}, indent=2\\)\\))",
+      "Bash(npx tsc *)",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(bash /tmp/plan_vs_impl.sh)"
     ]
   }
 }

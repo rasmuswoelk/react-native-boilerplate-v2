@@ -1,28 +1,28 @@
-import { Box, BoxProps } from '@/lib/components/Box'
-import { fontMapper } from '@/src/theme/fonts'
-import { useUnistyles } from 'react-native-unistyles'
-import type { AppTheme } from '@/src/unistyles'
+import { Box, BoxProps } from "@/lib/components/Box";
+import { fontMapper } from "@/src/theme/fonts";
+import { useUnistyles } from "react-native-unistyles";
+import type { AppTheme } from "@/src/unistyles";
 import {
   omitSpacingProps,
   SpacingProps,
   useGetSpacingStylesByComponentProps,
-} from '@/lib/theme/utils/createSpacingProps'
-import { getLineHeight } from '@/lib/theme/utils/getLineHeight'
-import { useMemo } from 'react'
-import { StyleProp, Text, TextProps, TextStyle } from 'react-native'
+} from "@/lib/theme/utils/createSpacingProps";
+import { getLineHeight } from "@/lib/theme/utils/getLineHeight";
+import { useMemo } from "react";
+import { StyleProp, Text, TextProps, TextStyle } from "react-native";
 
-export type TypographyProps = Omit<BoxProps, 'as'> &
+export type TypographyProps = Omit<BoxProps, "as"> &
   SpacingProps &
   TextProps & {
-    lineHeight?: keyof AppTheme['typography']['lineHeight'] | number
-    variant?: keyof AppTheme['typography']['variant']
-    fontFamily?: keyof AppTheme['typography']['fontFamily']
-    fontWeight?: keyof AppTheme['typography']['fontWeight']
-    fontSize?: keyof AppTheme['typography']['fontSize'] | number
-    textAlign?: 'left' | 'center' | 'right' | 'justify'
-    fontStyle?: 'normal' | 'italic'
-    letterSpacing?: number
-  }
+    lineHeight?: keyof AppTheme["typography"]["lineHeight"] | number;
+    variant?: keyof AppTheme["typography"]["variant"];
+    fontFamily?: keyof AppTheme["typography"]["fontFamily"];
+    fontWeight?: keyof AppTheme["typography"]["fontWeight"];
+    fontSize?: keyof AppTheme["typography"]["fontSize"] | number;
+    textAlign?: "left" | "center" | "right" | "justify";
+    fontStyle?: "normal" | "italic";
+    letterSpacing?: number;
+  };
 
 export const Typography = ({
   variant,
@@ -32,59 +32,59 @@ export const Typography = ({
   lineHeight,
   fontSize,
   textAlign,
-  fontStyle = 'normal',
+  fontStyle = "normal",
   letterSpacing,
   ...props
 }: TypographyProps) => {
-  const { theme } = useUnistyles()
-  const textProps = useMemo(() => omitSpacingProps(props), [props])
-  const spacingStyles = useGetSpacingStylesByComponentProps(props) as TextStyle
+  const { theme } = useUnistyles();
+  const textProps = useMemo(() => omitSpacingProps(props), [props]);
+  const spacingStyles = useGetSpacingStylesByComponentProps(props) as TextStyle;
 
   const fontFamilyValue = useMemo(() => {
     if (!fontFamily) {
-      return undefined
+      return undefined;
     }
 
     const mappedFontFamily =
-      fontMapper[fontFamily ?? 'primary']?.[fontWeight ?? 'regular']?.[
-        fontStyle ?? 'normal'
-      ]
+      fontMapper[fontFamily ?? "primary"]?.[fontWeight ?? "regular"]?.[
+        fontStyle ?? "normal"
+      ];
 
-    return mappedFontFamily ?? fontFamily
-  }, [fontFamily, fontWeight, fontStyle])
+    return mappedFontFamily ?? fontFamily;
+  }, [fontFamily, fontWeight, fontStyle]);
 
   const fontSizeValue = useMemo(() => {
     if (!fontSize && !variant) {
-      return undefined
+      return undefined;
     }
 
-    if (typeof fontSize === 'number') {
-      return fontSize
+    if (typeof fontSize === "number") {
+      return fontSize;
     }
 
     if (fontSize) {
-      return theme.typography.fontSize[fontSize]
+      return theme.typography.fontSize[fontSize];
     }
 
     if (variant) {
-      return theme.typography.variant[variant].fontSize
+      return theme.typography.variant[variant].fontSize;
     }
 
-    return theme.typography.variant.body.fontSize
-  }, [fontSize, theme, variant])
+    return theme.typography.variant.body.fontSize;
+  }, [fontSize, theme, variant]);
 
   const lineHeightValue = useMemo(() => {
     if (!lineHeight || !fontSizeValue) {
-      return undefined
+      return undefined;
     }
 
     const lhValue =
-      typeof lineHeight === 'number'
+      typeof lineHeight === "number"
         ? lineHeight
-        : theme.typography.lineHeight[lineHeight]
+        : theme.typography.lineHeight[lineHeight];
 
-    return getLineHeight(fontSizeValue, lhValue)
-  }, [lineHeight, theme, fontSizeValue])
+    return getLineHeight(fontSizeValue, lhValue);
+  }, [lineHeight, theme, fontSizeValue]);
 
   const styles = useMemo(
     () =>
@@ -113,7 +113,7 @@ export const Typography = ({
       fontStyle,
       letterSpacing,
     ]
-  )
+  );
 
   return (
     <Box
@@ -122,5 +122,5 @@ export const Typography = ({
       {...textProps}
       style={styles as StyleProp<TextStyle>}
     />
-  )
-}
+  );
+};

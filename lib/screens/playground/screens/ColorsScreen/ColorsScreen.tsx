@@ -1,53 +1,61 @@
-import { Box } from '@/lib/components/Box'
-import { Card } from '@/lib/components/Card'
-import { Container } from '@/lib/components/Container'
-import { Stack } from '@/lib/components/Stack'
-import { Typography } from '@/lib/components/Typography'
-import { StyleSheet, useUnistyles } from 'react-native-unistyles'
-import { FC } from 'react'
-import { ScrollView } from 'react-native'
+import { Box } from "@/lib/components/Box";
+import { Card } from "@/lib/components/Card";
+import { Container } from "@/lib/components/Container";
+import { Stack } from "@/lib/components/Stack";
+import { Typography } from "@/lib/components/Typography";
+import { StyleSheet, useUnistyles } from "react-native-unistyles";
+import { FC } from "react";
+import { ScrollView } from "react-native";
 
 const ColorSwatch: FC<{ color: string; name: string }> = ({ color, name }) => {
   return (
     <Box style={stylesheet.colorSwatchContainer}>
       <Box style={[stylesheet.colorSwatch, { backgroundColor: color }]} />
-      <Typography variant="caption" style={stylesheet.colorName} numberOfLines={1}>
+      <Typography
+        variant="caption"
+        style={stylesheet.colorName}
+        numberOfLines={1}
+      >
         {name}
       </Typography>
-      <Typography variant="caption" style={stylesheet.colorValue} numberOfLines={1}>
+      <Typography
+        variant="caption"
+        style={stylesheet.colorValue}
+        numberOfLines={1}
+      >
         {color}
       </Typography>
     </Box>
-  )
-}
+  );
+};
 
 export const ColorsScreen = () => {
-  const { theme } = useUnistyles()
+  const { theme } = useUnistyles();
 
   const singleColors = Object.entries(theme.colors).reduce(
     (acc, [key, value]) => {
-      if (typeof value === 'object') return acc
-      acc[key] = value
-      return acc
+      if (typeof value === "object") return acc;
+      acc[key] = value;
+      return acc;
     },
     {} as Record<string, string>
-  )
+  );
 
   const colorPalettes = Object.entries(theme.colors).reduce(
     (acc, [key, value]) => {
-      if (typeof value !== 'object') return acc
-      acc[key] = value
-      return acc
+      if (typeof value !== "object") return acc;
+      acc[key] = value;
+      return acc;
     },
     {} as Record<string, Record<string, string>>
-  )
+  );
 
   return (
-    <ScrollView>
-      <Container paddingBottom="lg">
+    <ScrollView style={{ backgroundColor: theme.colors.ground }}>
+      <Container paddingBottom="lg" paddingTop="lg">
         <Stack direction="vertical" gap="md">
           <Card title="Base Colors">
-            <Stack direction="horizontal" gap="md" style={{ flexWrap: 'wrap' }}>
+            <Stack direction="horizontal" gap="md" style={{ flexWrap: "wrap" }}>
               {Object.entries(singleColors).map(([name, color]) => (
                 <ColorSwatch key={name} color={color} name={name} />
               ))}
@@ -57,9 +65,15 @@ export const ColorsScreen = () => {
           {Object.entries(colorPalettes).map(([paletteName, palette]) => (
             <Card
               key={paletteName}
-              title={`${paletteName.charAt(0).toUpperCase() + paletteName.slice(1)} Palette`}
+              title={`${
+                paletteName.charAt(0).toUpperCase() + paletteName.slice(1)
+              } Palette`}
             >
-              <Stack direction="horizontal" gap="sm" style={{ flexWrap: 'wrap' }}>
+              <Stack
+                direction="horizontal"
+                gap="sm"
+                style={{ flexWrap: "wrap" }}
+              >
                 {Object.entries(palette).map(([shade, color]) => (
                   <ColorSwatch
                     key={`${paletteName}-${shade}`}
@@ -73,12 +87,12 @@ export const ColorsScreen = () => {
         </Stack>
       </Container>
     </ScrollView>
-  )
-}
+  );
+};
 
-const stylesheet = StyleSheet.create(theme => ({
+const stylesheet = StyleSheet.create((theme) => ({
   colorSwatchContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     minWidth: 80,
     marginBottom: theme.spacing.sm,
   },
@@ -93,14 +107,14 @@ const stylesheet = StyleSheet.create(theme => ({
     borderColor: theme.colors.gray[300],
   },
   colorName: {
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.colors.gray[700],
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 12,
   },
   colorValue: {
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.colors.gray[500],
     fontSize: 10,
   },
-}))
+}));

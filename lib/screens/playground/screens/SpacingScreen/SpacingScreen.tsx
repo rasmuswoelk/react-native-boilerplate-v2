@@ -1,19 +1,19 @@
-import { Box } from '@/lib/components/Box'
-import { Container } from '@/lib/components/Container'
-import { Typography } from '@/lib/components/Typography'
-import { AnimatedWidthBar } from '@/lib/components/AnimatedWidthBar'
-import { FadeIn, FadeInProps } from '@/lib/components/FadeIn'
-import { useUnistyles } from 'react-native-unistyles'
-import { ScrollView } from 'react-native'
-import { Card } from '@/lib/components/Card'
+import { Box } from "@/lib/components/Box";
+import { Container } from "@/lib/components/Container";
+import { Typography } from "@/lib/components/Typography";
+import { AnimatedWidthBar } from "@/lib/components/AnimatedWidthBar";
+import { FadeIn, FadeInProps } from "@/lib/components/FadeIn";
+import { useUnistyles } from "react-native-unistyles";
+import { ScrollView } from "react-native";
+import { Card } from "@/lib/components/Card";
 
 const fadeInProps: Partial<FadeInProps> = {
   delay: 50,
   duration: 200,
-  animationType: 'spring',
+  animationType: "spring",
   springConfig: { damping: 15 },
   translateY: 20,
-}
+};
 
 const SpacingItem = ({
   spacingKey,
@@ -21,10 +21,10 @@ const SpacingItem = ({
   index,
   theme,
 }: {
-  spacingKey: string
-  value: number
-  index: number
-  theme: any
+  spacingKey: string;
+  value: number;
+  index: number;
+  theme: any;
 }) => {
   return (
     <FadeIn {...fadeInProps}>
@@ -40,15 +40,15 @@ const SpacingItem = ({
         />
       </Box>
     </FadeIn>
-  )
-}
+  );
+};
 
 export const SpacingScreen = () => {
-  const { theme } = useUnistyles()
+  const { theme } = useUnistyles();
 
   return (
-    <ScrollView>
-      <Container>
+    <ScrollView style={{ backgroundColor: theme.colors.ground }}>
+      <Container paddingTop="lg">
         <Card title="Spacing Values">
           <FadeIn>
             {Object.entries(theme.spacing).map(([key, value], index) => (
@@ -69,53 +69,93 @@ export const SpacingScreen = () => {
               Margin Examples
             </Typography>
             <Box
-              style={{ backgroundColor: theme.colors.gray[200] }}
+              style={{ backgroundColor: theme.colors.brand[200] }}
               padding="md"
               marginBottom="md"
             >
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="xs" (4px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="xs">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="xs"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
             </Box>
 
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="md" marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              padding="md"
+              marginBottom="md"
+            >
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="sm" (8px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
             </Box>
 
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="md" marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              padding="md"
+              marginBottom="md"
+            >
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="md" (16px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="md">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="md"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
             </Box>
 
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="md" marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              padding="md"
+              marginBottom="md"
+            >
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="lg" (24px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="lg">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="lg"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
             </Box>
@@ -127,33 +167,63 @@ export const SpacingScreen = () => {
             <Typography variant="body" fontWeight="black" marginBottom="sm">
               Padding Examples
             </Typography>
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              marginBottom="md"
+            >
               <Typography variant="caption">{`padding="xs" (4px)`}</Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="xs">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="xs"
+              >
                 <Typography variant="caption">Padded content</Typography>
               </Box>
             </Box>
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              marginBottom="md"
+            >
               <Typography variant="caption">{`padding="sm" (8px)`}</Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+              >
                 <Typography variant="caption">Padded content</Typography>
               </Box>
             </Box>
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              marginBottom="md"
+            >
               <Typography variant="caption">{`padding="md" (16px)`}</Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="md">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="md"
+              >
                 <Typography variant="caption">Padded content</Typography>
               </Box>
             </Box>
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              marginBottom="md"
+            >
               <Typography variant="caption">{`padding="lg" (24px)`}</Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="lg">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="lg"
+              >
                 <Typography variant="caption">Padded content</Typography>
               </Box>
             </Box>
-            <Box style={{ backgroundColor: theme.colors.gray[200] }} marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.gray[200] }}
+              marginBottom="md"
+            >
               <Typography variant="caption">{`padding="xl" (32px)`}</Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="xl">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="xl"
+              >
                 <Typography variant="caption">Padded content</Typography>
               </Box>
             </Box>
@@ -161,5 +231,5 @@ export const SpacingScreen = () => {
         </FadeIn>
       </Container>
     </ScrollView>
-  )
-}
+  );
+};
