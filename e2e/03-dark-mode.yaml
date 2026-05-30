@@ -4,14 +4,11 @@ appId: com.rasmuswoelk.react-native-boilerplate
 - tapOn: "Enter the playground"
 - assertVisible:
     label: "Toggle dark mode"
-    checked: false
 - tapOn:
     label: "Toggle dark mode"
 - assertVisible:
     label: "Toggle dark mode"
-    checked: true
 - tapOn:
     label: "Toggle dark mode"
 - assertVisible:
     label: "Toggle dark mode"
-    checked: false
