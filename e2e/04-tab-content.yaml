@@ -8,7 +8,9 @@ appId: com.rasmuswoelk.react-native-boilerplate
 - tapOn: "Typography"
 - assertVisible: "Variants"
 - assertVisible: "Font sizes"
-- assertVisible: "Font weights"
+- scrollUntilVisible:
+    element:
+      text: "Font weights"
 - tapOn: "Spacing"
 - assertVisible: "Spacing Values"
 - assertVisible: "Margin Examples"
