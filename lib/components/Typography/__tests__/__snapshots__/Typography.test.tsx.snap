@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typography > matches snapshot with variant="body" 1`] = `
+<Text
+  ref={null}
+  style={
+    [
+      {
+        "color": "#000000",
+      },
+      {},
+      [
+        {
+          "fontSize": 16,
+          "lineHeight": 19,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "fontStyle": "normal",
+        },
+        {},
+      ],
+    ]
+  }
+>
+  Body text
+</Text>
+`;
+
+exports[`Typography > matches snapshot with variant="caption" and fontWeight="bold" 1`] = `
+<Text
+  ref={null}
+  style={
+    [
+      {
+        "color": "#000000",
+      },
+      {},
+      [
+        {
+          "fontSize": 14,
+          "lineHeight": 15,
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "fontWeight": 600,
+        },
+        {
+          "fontStyle": "normal",
+        },
+        {},
+      ],
+    ]
+  }
+>
+  Caption
+</Text>
+`;

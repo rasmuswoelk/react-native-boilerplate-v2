@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Box > matches snapshot 1`] = `
+<View
+  ref={null}
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+      },
+      {
+        "marginTop": 8,
+        "paddingHorizontal": 16,
+      },
+      undefined,
+    ]
+  }
+/>
+`;

@@ -13,7 +13,10 @@
     "lint": "eslint --max-warnings 0",
     "typecheck": "tsc",
     "clean": "npx react-native clean",
-    "pods:install": "cd ios && pod install && cd .."
+    "pods:install": "cd ios && pod install && cd ..",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@babel/preset-react": "^7.27.1",
@@ -56,11 +59,17 @@
   "devDependencies": {
     "@react-native-community/cli": "latest",
     "@types/react": "~19.2.15",
+    "@types/react-test-renderer": "^19.1.0",
     "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^4.1.7",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~56.0.4",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "typescript": "~6.0.3"
+    "react-test-renderer": "^19.2.6",
+    "typescript": "~6.0.3",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.7"
   },
   "private": true
 }
