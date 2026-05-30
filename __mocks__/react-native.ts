@@ -1,5 +1,4 @@
 import React from 'react'
-import { vi } from 'vitest'
 
 const makeNativeComponent = (name: string) => {
   const Component = React.forwardRef<any, any>(({ children, ...props }, ref) =>
@@ -17,10 +16,21 @@ export const Switch = makeNativeComponent('Switch')
 export const TouchableOpacity = makeNativeComponent('TouchableOpacity')
 export const Image = makeNativeComponent('Image')
 
+const flattenStyle = (style: any): Record<string, any> | null => {
+  if (style == null) return null
+  if (Array.isArray(style)) {
+    return style.reduce((acc: Record<string, any>, s: any) => ({
+      ...acc,
+      ...(flattenStyle(s) ?? {}),
+    }), {})
+  }
+  return style
+}
+
 export const StyleSheet = {
   create: <T extends Record<string, any>>(styles: T): T => styles,
   hairlineWidth: 0.5,
-  flatten: (style: any) => style,
+  flatten: flattenStyle,
 }
 
 export const PixelRatio = {
@@ -37,14 +47,21 @@ export const Platform = {
 export const Animated = {
   View: makeNativeComponent('Animated.View'),
   Text: makeNativeComponent('Animated.Text'),
-  Value: vi.fn().mockImplementation(() => ({
-    setValue: vi.fn(),
-    interpolate: vi.fn(),
+  Value: jest.fn().mockImplementation(() => ({
+    setValue: jest.fn(),
+    interpolate: jest.fn(),
   })),
-  timing: vi.fn(() => ({ start: vi.fn() })),
-  spring: vi.fn(() => ({ start: vi.fn() })),
+  timing: jest.fn(() => ({ start: jest.fn() })),
+  spring: jest.fn(() => ({ start: jest.fn() })),
   createAnimatedComponent: (Component: any) => Component,
 }
 
-export const useColorScheme = vi.fn(() => 'light')
-export const useWindowDimensions = vi.fn(() => ({ width: 375, height: 812 }))
+export const useColorScheme = jest.fn(() => 'light')
+export const useWindowDimensions = jest.fn(() => ({ width: 375, height: 812 }))
+
+export const TurboModuleRegistry = {
+  get: () => null,
+  getEnforcing: (name: string) => {
+    throw new Error(`TurboModule '${name}' could not be found`)
+  },
+}
