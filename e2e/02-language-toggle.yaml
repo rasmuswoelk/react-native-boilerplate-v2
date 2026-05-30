@@ -1,0 +1,9 @@
+appId: com.rasmuswoelk.react-native-boilerplate
+---
+- launchApp
+- tapOn: "Enter the playground"
+- assertVisible: "Home"
+- tapOn: "DA"
+- assertVisible: "Hjem"
+- tapOn: "EN"
+- assertVisible: "Home"

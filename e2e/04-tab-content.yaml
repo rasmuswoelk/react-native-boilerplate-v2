@@ -1,0 +1,18 @@
+appId: com.rasmuswoelk.react-native-boilerplate
+---
+- launchApp
+- tapOn: "Enter the playground"
+- assertVisible: "Welcome to the playground"
+- tapOn: "Colors"
+- assertVisible: "Base Colors"
+- tapOn: "Typography"
+- assertVisible: "Variants"
+- assertVisible: "Font sizes"
+- scrollUntilVisible:
+    element:
+      text: "Font weights"
+- tapOn: "Spacing"
+- assertVisible: "Spacing Values"
+- scrollUntilVisible:
+    element:
+      text: "Margin Examples"

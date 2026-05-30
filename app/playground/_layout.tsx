@@ -35,6 +35,7 @@ const DarkModeSwitcher = () => {
     <View style={stylesheet.darkMode}>
       <Text style={stylesheet.label}>{t('common.darkMode')}</Text>
       <Switch
+        testID={isDarkMode ? 'dark-mode-on' : 'dark-mode-off'}
         accessibilityLabel="Toggle dark mode"
         trackColor={{ false: theme.colors.gray[300], true: theme.colors.brand[600] }}
         thumbColor={theme.colors.white}

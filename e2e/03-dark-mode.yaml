@@ -1,0 +1,14 @@
+appId: com.rasmuswoelk.react-native-boilerplate
+---
+- launchApp
+- tapOn: "Enter the playground"
+- assertVisible:
+    id: "dark-mode-off"
+- tapOn:
+    id: "dark-mode-off"
+- assertVisible:
+    id: "dark-mode-on"
+- tapOn:
+    id: "dark-mode-on"
+- assertVisible:
+    id: "dark-mode-off"

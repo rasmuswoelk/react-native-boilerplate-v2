@@ -1,0 +1,15 @@
+appId: com.rasmuswoelk.react-native-boilerplate
+---
+- launchApp
+- assertVisible: "Enter the playground"
+- tapOn: "Enter the playground"
+- assertVisible: "Home"
+- tapOn: "Typography"
+- assertVisible: "Variants"
+- tapOn: "Spacing"
+- assertVisible: "Spacing Values"
+- tapOn: "Colors"
+- assertVisible: "Base Colors"
+- tapOn: "Gradients"
+- tapOn: "Home"
+- assertVisible: "Welcome to the playground"
