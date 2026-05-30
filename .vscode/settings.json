@@ -17,5 +17,13 @@
     {
       "mode": "auto"
     }
+  ],
+  "i18n-ally.localesPaths": [
+    "lib/i18n",
+    "src/i18n",
+    "ios/Pods/ReactNativeDependencies/Headers/folly/lang",
+    "ios/Pods/Headers/Private/ReactNativeDependencies/folly/lang",
+    "ios/Pods/Headers/Public/ReactNativeDependencies/folly/lang",
+    "ios/Pods/ReactNativeDependencies/framework/packages/react-native/ReactNativeDependencies.xcframework/Headers/folly/lang"
   ]
 }
