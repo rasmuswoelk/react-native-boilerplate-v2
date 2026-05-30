@@ -1,1 +1,1 @@
-export * from "./IndexScreen";
+export * from './IndexScreen';

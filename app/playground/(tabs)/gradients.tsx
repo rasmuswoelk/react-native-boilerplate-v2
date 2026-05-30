@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { View, ScrollView, Pressable } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { Container } from '@/lib/components/Container'
-import { Typography } from '@/lib/components/Typography'
-import { Gradient, AnimatedGradient } from '@/lib/components/Gradient'
-import { useUnistyles } from 'react-native-unistyles'
+import React, { useState } from 'react';
+import { Pressable, ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useUnistyles } from 'react-native-unistyles';
+import { Container } from '@/lib/components/Container';
+import { AnimatedGradient, Gradient } from '@/lib/components/Gradient';
+import { Typography } from '@/lib/components/Typography';
 
 const GRADIENT_EXAMPLES = [
   {
@@ -71,11 +71,11 @@ const GRADIENT_EXAMPLES = [
       />
     ),
   },
-]
+];
 
 export default function GradientsScreen() {
-  const { theme } = useUnistyles()
-  const [pausedAnimations, setPausedAnimations] = useState(false)
+  const { theme } = useUnistyles();
+  const [pausedAnimations, setPausedAnimations] = useState(false);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
@@ -87,9 +87,7 @@ export default function GradientsScreen() {
         <View style={{ marginBottom: theme.spacing.lg }}>
           <Pressable
             style={{
-              backgroundColor: !pausedAnimations
-                ? theme.colors.red[500]
-                : theme.colors.green[700],
+              backgroundColor: !pausedAnimations ? theme.colors.red[500] : theme.colors.green[700],
               paddingHorizontal: theme.spacing.md,
               paddingVertical: theme.spacing.sm,
               borderRadius: 8,
@@ -128,9 +126,7 @@ export default function GradientsScreen() {
               <View style={{ borderRadius: 8, overflow: 'hidden', alignItems: 'center' }}>
                 {React.cloneElement(example.component, {
                   paused:
-                    example.component.type === AnimatedGradient
-                      ? pausedAnimations
-                      : undefined,
+                    example.component.type === AnimatedGradient ? pausedAnimations : undefined,
                 })}
               </View>
             </View>
@@ -138,5 +134,5 @@ export default function GradientsScreen() {
         </ScrollView>
       </Container>
     </SafeAreaView>
-  )
+  );
 }

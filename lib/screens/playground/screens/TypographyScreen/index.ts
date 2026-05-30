@@ -1,1 +1,1 @@
-export * from "./TypographyScreen";
+export * from './TypographyScreen';

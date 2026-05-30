@@ -1,8 +1,8 @@
-import { Stack } from "expo-router";
-import { Pressable, Switch, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { StyleSheet, UnistylesRuntime, useUnistyles } from "react-native-unistyles";
-import { useTranslation } from "@/lib/i18n";
+import { Stack } from 'expo-router';
+import { Pressable, Switch, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
+import { useTranslation } from '@/lib/i18n';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -11,15 +11,11 @@ const LanguageSwitcher = () => {
   return (
     <View style={stylesheet.langSwitcher}>
       <Pressable onPress={() => i18n.changeLanguage('en')}>
-        <Text style={[stylesheet.langOption, isEN && stylesheet.langOptionActive]}>
-          EN
-        </Text>
+        <Text style={[stylesheet.langOption, isEN && stylesheet.langOptionActive]}>EN</Text>
       </Pressable>
       <Text style={stylesheet.langDivider}>/</Text>
       <Pressable onPress={() => i18n.changeLanguage('da')}>
-        <Text style={[stylesheet.langOption, !isEN && stylesheet.langOptionActive]}>
-          DA
-        </Text>
+        <Text style={[stylesheet.langOption, !isEN && stylesheet.langOptionActive]}>DA</Text>
       </Pressable>
     </View>
   );
@@ -28,11 +24,11 @@ const LanguageSwitcher = () => {
 const DarkModeSwitcher = () => {
   const { theme, rt } = useUnistyles();
   const { t } = useTranslation();
-  const isDarkMode = rt.themeName === "dark";
+  const isDarkMode = rt.themeName === 'dark';
 
   const handleValueChange = (value: boolean) => {
     UnistylesRuntime.setAdaptiveThemes(false);
-    UnistylesRuntime.setTheme(value ? "dark" : "light");
+    UnistylesRuntime.setTheme(value ? 'dark' : 'light');
   };
 
   return (
@@ -56,7 +52,7 @@ const PlaygroundLayout = () => {
   return (
     <SafeAreaView
       style={[stylesheet.container, { backgroundColor: theme.colors.background }]}
-      edges={["top", "left", "right"]}
+      edges={['top', 'left', 'right']}
     >
       <View style={stylesheet.header}>
         <LanguageSwitcher />
@@ -69,23 +65,23 @@ const PlaygroundLayout = () => {
 
 export default PlaygroundLayout;
 
-const stylesheet = StyleSheet.create(theme => ({
+const stylesheet = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
   },
   header: {
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: theme.colors.background,
     borderBottomColor: theme.colors.border,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: theme.spacing.md,
     paddingVertical: theme.spacing.sm,
   },
   langSwitcher: {
-    alignItems: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    flexDirection: 'row',
     gap: theme.spacing.xs,
   },
   langOption: {
@@ -103,8 +99,8 @@ const stylesheet = StyleSheet.create(theme => ({
     fontSize: theme.typography.fontSize.md,
   },
   darkMode: {
-    alignItems: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    flexDirection: 'row',
     gap: theme.spacing.sm,
   },
   label: {

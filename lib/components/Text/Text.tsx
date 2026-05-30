@@ -1,1 +1,1 @@
-export { Text, type TextProps } from "react-native";
+export { Text, type TextProps } from 'react-native';

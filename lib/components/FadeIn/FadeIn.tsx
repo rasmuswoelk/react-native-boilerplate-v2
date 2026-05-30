@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { ViewProps } from "react-native";
+import React, { useEffect } from 'react';
+import { ViewProps } from 'react-native';
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withDelay,
-  withSpring,
+  AnimatedStyle,
   Easing,
   runOnJS,
-  AnimatedStyle,
-} from "react-native-reanimated";
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated';
 
-export interface FadeInProps extends Omit<ViewProps, "style"> {
+export interface FadeInProps extends Omit<ViewProps, 'style'> {
   /**
    * Children to be animated
    */
@@ -39,7 +39,7 @@ export interface FadeInProps extends Omit<ViewProps, "style"> {
    * Animation type for translateY movement
    * @default "timing"
    */
-  animationType?: "timing" | "spring";
+  animationType?: 'timing' | 'spring';
 
   /**
    * Spring configuration (only used when animationType is "spring")
@@ -75,7 +75,7 @@ export interface FadeInProps extends Omit<ViewProps, "style"> {
   /**
    * Custom style to apply to the animated view
    */
-  style?: AnimatedStyle<ViewProps["style"]>;
+  style?: AnimatedStyle<ViewProps['style']>;
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({
@@ -83,7 +83,7 @@ export const FadeIn: React.FC<FadeInProps> = ({
   duration = 300,
   delay = 0,
   translateY = 20,
-  animationType = "timing",
+  animationType = 'timing',
   springConfig = {
     damping: 15,
     stiffness: 150,
@@ -103,19 +103,16 @@ export const FadeIn: React.FC<FadeInProps> = ({
   const startAnimation = React.useCallback(() => {
     const animationCallback = onAnimationComplete
       ? () => {
-          "worklet";
+          'worklet';
           runOnJS(onAnimationComplete)();
         }
       : undefined;
 
     // Opacity animation (always uses timing)
-    opacity.value = withDelay(
-      delay,
-      withTiming(1, { duration }, animationCallback)
-    );
+    opacity.value = withDelay(delay, withTiming(1, { duration }, animationCallback));
 
     // TranslateY animation
-    if (animationType === "spring") {
+    if (animationType === 'spring') {
       translateYValue.value = withDelay(delay, withSpring(0, springConfig));
     } else {
       translateYValue.value = withDelay(
@@ -123,7 +120,7 @@ export const FadeIn: React.FC<FadeInProps> = ({
         withTiming(0, {
           duration,
           easing: timingConfig.easing,
-        })
+        }),
       );
     }
   }, [

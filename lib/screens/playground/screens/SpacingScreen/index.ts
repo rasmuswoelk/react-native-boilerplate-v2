@@ -1,1 +1,1 @@
-export { SpacingScreen } from "./SpacingScreen";
+export { SpacingScreen } from './SpacingScreen';

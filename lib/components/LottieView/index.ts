@@ -1,1 +1,1 @@
-export { default as LottieView } from "lottie-react-native";
+export { default as LottieView } from 'lottie-react-native';

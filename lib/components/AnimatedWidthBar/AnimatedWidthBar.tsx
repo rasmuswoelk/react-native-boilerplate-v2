@@ -1,11 +1,11 @@
+import { useEffect } from 'react';
 import Animated, {
-  useSharedValue,
   useAnimatedStyle,
-  withTiming,
+  useSharedValue,
   withDelay,
   withSpring,
-} from "react-native-reanimated";
-import { useEffect } from "react";
+  withTiming,
+} from 'react-native-reanimated';
 
 export interface AnimatedWidthBarProps {
   width: number;
@@ -39,7 +39,7 @@ export const AnimatedWidthBar = ({
       withSpring(width, {
         damping: springConfig.damping,
         stiffness: springConfig.stiffness,
-      })
+      }),
     );
   }, [
     width,
