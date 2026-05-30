@@ -29,7 +29,21 @@
       "Bash(npx tsc *)",
       "Bash(cat)",
       "Read(//tmp/**)",
-      "Bash(bash /tmp/plan_vs_impl.sh)"
+      "Bash(bash /tmp/plan_vs_impl.sh)",
+      "Bash(pnpm test:run lib/theme/utils/__tests__/)",
+      "Bash(pnpm test:run lib/i18n/__tests__/)",
+      "Bash(pnpm test:run lib/components/Box/__tests__/ lib/components/Typography/__tests__/)",
+      "Bash(pnpm test:run)",
+      "Bash(gh pr create --title 'test: add vitest unit test setup' --body ' *)",
+      "Bash(maestro --version)",
+      "Bash(pnpm test:run --testPathPattern=\"Box\" --verbose)",
+      "Bash(pnpm test:run -- --testPathPattern=\"/tmp/debug\")",
+      "Bash(node *)",
+      "WebFetch(domain:v2.unistyl.es)",
+      "WebFetch(domain:www.unistyl.es)",
+      "Bash(npx jest *)",
+      "Bash(pnpm test *)",
+      "Skill(superpowers:systematic-debugging)"
     ]
   }
 }

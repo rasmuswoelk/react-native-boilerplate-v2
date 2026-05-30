@@ -1,61 +1,49 @@
-import React from 'react'
-import { describe, expect, it, vi } from 'vitest'
-import { act, create } from 'react-test-renderer'
+import { render } from "@testing-library/react-native";
+import { Text } from "react-native";
+import { Box } from "../Box";
 
-vi.mock('react-native')
-vi.mock('react-native-unistyles')
+describe("Box", () => {
+  it("renders without crashing", () => {
+    expect(() => render(<Box />)).not.toThrow();
+  });
 
-import { Box } from '../Box'
+  it("renders children", () => {
+    const { getByText } = render(
+      <Box>
+        <Text>hello</Text>
+      </Box>
+    );
+    expect(getByText("hello")).toBeTruthy();
+  });
 
-const render = (element: React.ReactElement) => {
-  let renderer: ReturnType<typeof create>
-  act(() => { renderer = create(element) })
-  return renderer!.toJSON() as any
-}
+  it("applies a spacing key as a pixel value in the style", () => {
+    const { getByTestId } = render(<Box testID="box" marginTop="sm" />);
+    expect(getByTestId("box")).toHaveStyle({ marginTop: 8 });
+  });
 
-const flatStyle = (style: unknown): Record<string, any> => {
-  if (!style) return {}
-  if (Array.isArray(style)) return Object.assign({}, ...style.map(flatStyle))
-  return style as Record<string, any>
-}
+  it("applies multiple spacing keys", () => {
+    const { getByTestId } = render(
+      <Box testID="box" padding="md" marginBottom="lg" />
+    );
+    expect(getByTestId("box")).toHaveStyle({ padding: 16, marginBottom: 24 });
+  });
 
-describe('Box', () => {
-  it('renders without crashing', () => {
-    expect(() => { act(() => { create(<Box />) }) }).not.toThrow()
-  })
+  it("resolves a top-level color path for backgroundColor", () => {
+    const { getByTestId } = render(
+      <Box testID="box" backgroundColor="background" />
+    );
+    expect(getByTestId("box")).toHaveStyle({ backgroundColor: "#ffffff" });
+  });
 
-  it('renders children', () => {
-    const tree = render(<Box>{React.createElement('Text', null, 'hello')}</Box>)
-    expect(JSON.stringify(tree)).toContain('hello')
-  })
+  it("resolves a borderRadius token", () => {
+    const { getByTestId } = render(<Box testID="box" borderRadius="md" />);
+    expect(getByTestId("box")).toHaveStyle({ borderRadius: 16 });
+  });
 
-  it('applies a spacing key as a pixel value in the style', () => {
-    const tree = render(<Box marginTop="sm" />)
-    const style = flatStyle(tree?.props?.style)
-    expect(style.marginTop).toBe(8) // sm = 8 in mockTheme.spacing
-  })
-
-  it('applies multiple spacing keys', () => {
-    const tree = render(<Box padding="md" marginBottom="lg" />)
-    const style = flatStyle(tree?.props?.style)
-    expect(style.padding).toBe(16)     // md = 16
-    expect(style.marginBottom).toBe(24) // lg = 24
-  })
-
-  it('resolves a top-level color path for backgroundColor', () => {
-    const tree = render(<Box backgroundColor="background" />)
-    const style = flatStyle(tree?.props?.style)
-    expect(style.backgroundColor).toBe('#ffffff')
-  })
-
-  it('resolves a borderRadius token', () => {
-    const tree = render(<Box borderRadius="md" />)
-    const style = flatStyle(tree?.props?.style)
-    expect(style.borderRadius).toBe(16) // md = 16
-  })
-
-  it('matches snapshot', () => {
-    const tree = render(<Box marginTop="sm" paddingHorizontal="md" backgroundColor="ground" />)
-    expect(tree).toMatchSnapshot()
-  })
-})
+  it("matches snapshot", () => {
+    const { toJSON } = render(
+      <Box marginTop="sm" paddingHorizontal="md" backgroundColor="ground" />
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+});

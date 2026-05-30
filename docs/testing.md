@@ -1,10 +1,10 @@
 # Testing
 
-Two levels of testing: **unit tests** (vitest) for `lib/` utilities and components, and **e2e tests** (Maestro) for user-visible flows on the iOS simulator.
+Two levels of testing: **unit tests** (jest) for `lib/` utilities and components, and **e2e tests** (Maestro) for user-visible flows on the iOS simulator.
 
 ---
 
-## Unit Tests — vitest
+## Unit Tests — jest
 
 ### Commands
 
@@ -34,19 +34,17 @@ pnpm test:run lib/theme/utils/__tests__/getLineHeight.test.ts
 
 | Concern | Decision |
 |---------|----------|
-| Environment | Node — no DOM, no jsdom |
-| Component renderer | `react-test-renderer` wrapped in `act()` (React 19 concurrent renderer requires it) |
-| Native mocks | `__mocks__/react-native.ts`, `__mocks__/react-native-unistyles.ts`, `__mocks__/expo-localization.ts` |
-| Mock theme | `test/mocks/theme.ts` mirrors `src/unistyles.ts` lightTheme shape |
+| Preset | `jest-expo` — handles RN/Expo transforms and platform resolution |
+| Component renderer | `@testing-library/react-native` — `render`, `getByTestId`, `toHaveStyle` |
+| Native mocks | `__mocks__/react-native.ts`, `react-native-unistyles/mocks` |
+| Globals | `describe`, `it`, `expect`, `jest` — available without imports |
 
 ### Writing a new unit test
 
 **Utility function** — create `lib/path/to/__tests__/myUtil.test.ts`:
 
 ```ts
-import { describe, expect, it, vi } from 'vitest'
-
-vi.mock('react-native') // only if the util imports from react-native
+jest.mock('react-native') // only if the util imports from react-native
 
 import { myUtil } from '../myUtil'
 
@@ -60,29 +58,20 @@ describe('myUtil', () => {
 **Component** — create `lib/components/MyComp/__tests__/MyComp.test.tsx`:
 
 ```tsx
-import React from 'react'
-import { describe, expect, it, vi } from 'vitest'
-import { act, create } from 'react-test-renderer'
-
-vi.mock('react-native')
-vi.mock('react-native-unistyles')
-
+import { render } from '@testing-library/react-native'
 import { MyComp } from '../MyComp'
-
-const render = (element: React.ReactElement) => {
-  let renderer: ReturnType<typeof create>
-  act(() => { renderer = create(element) })
-  return renderer!.toJSON() as any
-}
 
 describe('MyComp', () => {
   it('renders without crashing', () => {
-    expect(() => { act(() => { create(<MyComp />) }) }).not.toThrow()
+    expect(() => render(<MyComp />)).not.toThrow()
+  })
+
+  it('applies a style prop', () => {
+    const { getByTestId } = render(<MyComp testID="comp" someProp="value" />)
+    expect(getByTestId('comp')).toHaveStyle({ someStyle: expectedValue })
   })
 })
 ```
-
-The `render` helper flushes React's concurrent renderer before calling `toJSON()`. Without `act()`, `toJSON()` returns `null` in React 19.
 
 ---
 

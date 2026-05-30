@@ -1,7 +1,6 @@
-import { beforeAll, describe, expect, it, vi } from 'vitest'
 import i18next from 'i18next'
 
-vi.mock('expo-localization')
+jest.mock('expo-localization')
 
 import { createI18n } from '../createI18n'
 

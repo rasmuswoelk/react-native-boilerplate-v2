@@ -1,6 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
-
-vi.mock('react-native')
+jest.mock('react-native')
 
 import { getLineHeight } from '../getLineHeight'
 

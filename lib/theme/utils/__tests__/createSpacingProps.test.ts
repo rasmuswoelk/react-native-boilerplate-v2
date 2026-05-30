@@ -1,7 +1,5 @@
-import { describe, expect, it, vi } from 'vitest'
-
-vi.mock('react-native')
-vi.mock('react-native-unistyles')
+jest.mock('react-native')
+jest.mock('react-native-unistyles')
 
 import {
   createSpacingStyles,

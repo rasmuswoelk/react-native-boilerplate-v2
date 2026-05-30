@@ -1,6 +1,6 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Typography > matches snapshot with variant="body" 1`] = `
+exports[`Typography matches snapshot with variant="body" 1`] = `
 <Text
   ref={null}
   style={
@@ -29,7 +29,7 @@ exports[`Typography > matches snapshot with variant="body" 1`] = `
 </Text>
 `;
 
-exports[`Typography > matches snapshot with variant="caption" and fontWeight="bold" 1`] = `
+exports[`Typography matches snapshot with variant="caption" and fontWeight="bold" 1`] = `
 <Text
   ref={null}
   style={

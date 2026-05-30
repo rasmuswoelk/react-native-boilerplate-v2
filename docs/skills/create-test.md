@@ -1,6 +1,6 @@
 ---
 name: create-test
-description: Patterns and rules for writing unit tests (vitest) and e2e tests (Maestro) in this React Native boilerplate. Use when asked to add, write, or create tests for any file in the project.
+description: Patterns and rules for writing unit tests (jest) and e2e tests (Maestro) in this React Native boilerplate. Use when asked to add, write, or create tests for any file in the project.
 ---
 
 # Creating Tests in This Project
@@ -11,7 +11,7 @@ Decide which test layer before writing anything:
 
 ---
 
-## Unit Tests (vitest)
+## Unit Tests (jest)
 
 ### File placement
 `lib/path/to/__tests__/filename.test.ts` (`.tsx` for components)
@@ -20,18 +20,18 @@ Decide which test layer before writing anything:
 
 For any test touching a component or importing from `react-native` or `react-native-unistyles`:
 ```ts
-vi.mock('react-native')
-vi.mock('react-native-unistyles')
+jest.mock('react-native')
+jest.mock('react-native-unistyles')
 ```
 
 For i18n tests:
 ```ts
-vi.mock('expo-localization')
+jest.mock('expo-localization')
 ```
 
 For Typography specifically (blocks `@expo-google-fonts` imports):
 ```ts
-vi.mock('@/src/theme/fonts', () => ({
+jest.mock('@/src/theme/fonts', () => ({
   fontMapper: {
     primary: {
       regular: { normal: 'Font_400Regular', italic: 'Font_400Regular_Italic' },
@@ -46,38 +46,26 @@ vi.mock('@/src/theme/fonts', () => ({
 }))
 ```
 
-### Component render helper — required for React 19
+### Component rendering — use `@testing-library/react-native`
 
 ```tsx
-import { act, create } from 'react-test-renderer'
+import { render } from '@testing-library/react-native'
 
-const render = (element: React.ReactElement) => {
-  let renderer: ReturnType<typeof create>
-  act(() => { renderer = create(element) })
-  return renderer!.toJSON() as any
-}
+it('renders children', () => {
+  const { getByText } = render(<Box><Text>hello</Text></Box>)
+  expect(getByText('hello')).toBeTruthy()
+})
 ```
 
-Without `act()`, `toJSON()` returns `null` in React 19's concurrent renderer.
-
-### Style inspection helper
-
-```ts
-const flatStyle = (style: unknown): Record<string, any> => {
-  if (!style) return {}
-  if (Array.isArray(style)) return Object.assign({}, ...style.map(flatStyle))
-  return style as Record<string, any>
-}
-
-// Usage
-const tree = render(<Box marginTop="sm" />)
-const style = flatStyle(tree?.props?.style)
-expect(style.marginTop).toBe(8)
+For style assertions use `toHaveStyle` from `@testing-library/react-native/matchers`:
+```tsx
+const { getByTestId } = render(<Box testID="box" marginTop="sm" />)
+expect(getByTestId('box')).toHaveStyle({ marginTop: 8 })
 ```
 
-### Mock theme values (from `test/mocks/theme.ts`)
+### Mock theme values
 
-Use these values in assertions — they match what `useUnistyles()` returns in tests:
+The unistyles mock returns the lightTheme shape from `src/unistyles.ts`. Key values:
 
 | Token | Key | Value |
 |-------|-----|-------|

@@ -13,4 +13,6 @@ appId: com.rasmuswoelk.react-native-boilerplate
       text: "Font weights"
 - tapOn: "Spacing"
 - assertVisible: "Spacing Values"
-- assertVisible: "Margin Examples"
+- scrollUntilVisible:
+    element:
+      text: "Margin Examples"
