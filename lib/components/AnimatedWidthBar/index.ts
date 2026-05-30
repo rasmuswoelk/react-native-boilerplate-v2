@@ -1,2 +1,2 @@
-export { AnimatedWidthBar } from "./AnimatedWidthBar";
-export type { AnimatedWidthBarProps } from "./AnimatedWidthBar";
+export type { AnimatedWidthBarProps } from './AnimatedWidthBar';
+export { AnimatedWidthBar } from './AnimatedWidthBar';

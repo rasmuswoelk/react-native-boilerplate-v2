@@ -1,5 +1,5 @@
-import { NativeTabs } from "expo-router/unstable-native-tabs";
-import { useTranslation } from "@/lib/i18n";
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { useTranslation } from '@/lib/i18n';
 
 const PlaygroundLayout = () => {
   const { t, i18n } = useTranslation();

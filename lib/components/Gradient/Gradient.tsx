@@ -1,14 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Canvas, Rect, LinearGradient, vec } from "@shopify/react-native-skia";
-import { ViewStyle } from "react-native";
+import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ViewStyle } from 'react-native';
 
-export type GradientDirection =
-  | "horizontal"
-  | "vertical"
-  | "diagonal"
-  | "radial"
-  | "random";
-export type GradientSpeed = "slow" | "medium" | "fast";
+export type GradientDirection = 'horizontal' | 'vertical' | 'diagonal' | 'radial' | 'random';
+export type GradientSpeed = 'slow' | 'medium' | 'fast';
 
 export interface GradientProps {
   /**
@@ -58,13 +53,7 @@ export interface GradientProps {
    * Blend mode for the gradient
    * @default 'normal'
    */
-  blendMode?:
-    | "normal"
-    | "multiply"
-    | "screen"
-    | "overlay"
-    | "darken"
-    | "lighten";
+  blendMode?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten';
   /**
    * Opacity of the gradient
    * @default 1
@@ -73,18 +62,18 @@ export interface GradientProps {
 }
 
 const DEFAULT_COLOR_PALETTE = [
-  "#FF6B6B", // Red
-  "#4ECDC4", // Teal
-  "#45B7D1", // Blue
-  "#96CEB4", // Green
-  "#FFEAA7", // Yellow
-  "#DDA0DD", // Plum
-  "#98D8C8", // Mint
-  "#F7DC6F", // Light Yellow
-  "#BB8FCE", // Light Purple
-  "#85C1E9", // Light Blue
-  "#F8C471", // Orange
-  "#82E0AA", // Light Green
+  '#FF6B6B', // Red
+  '#4ECDC4', // Teal
+  '#45B7D1', // Blue
+  '#96CEB4', // Green
+  '#FFEAA7', // Yellow
+  '#DDA0DD', // Plum
+  '#98D8C8', // Mint
+  '#F7DC6F', // Light Yellow
+  '#BB8FCE', // Light Purple
+  '#85C1E9', // Light Blue
+  '#F8C471', // Orange
+  '#82E0AA', // Light Green
 ];
 
 export const Gradient: React.FC<GradientProps> = ({
@@ -94,10 +83,10 @@ export const Gradient: React.FC<GradientProps> = ({
   autoGenerate = true,
   colorPalette = DEFAULT_COLOR_PALETTE,
   colorCount = 2,
-  direction = "random",
-  speed: _speed = "medium", // Unused in static gradient
+  direction = 'random',
+  speed: _speed = 'medium', // Unused in static gradient
   colors,
-  blendMode = "normal",
+  blendMode = 'normal',
   opacity = 1,
 }) => {
   const [gradientConfig, setGradientConfig] = useState({
@@ -109,18 +98,18 @@ export const Gradient: React.FC<GradientProps> = ({
   const getDirectionVectors = useCallback(
     (dir: GradientDirection) => {
       switch (dir) {
-        case "horizontal":
+        case 'horizontal':
           return { start: vec(0, height / 2), end: vec(width, height / 2) };
-        case "vertical":
+        case 'vertical':
           return { start: vec(width / 2, 0), end: vec(width / 2, height) };
-        case "diagonal":
+        case 'diagonal':
           return { start: vec(0, 0), end: vec(width, height) };
-        case "radial":
+        case 'radial':
           return {
             start: vec(width / 2, height / 2),
             end: vec(width, height / 2),
           };
-        case "random":
+        case 'random':
         default:
           const startX = Math.random() * width;
           const startY = Math.random() * height;
@@ -129,7 +118,7 @@ export const Gradient: React.FC<GradientProps> = ({
           return { start: vec(startX, startY), end: vec(endX, endY) };
       }
     },
-    [width, height]
+    [width, height],
   );
 
   const generateGradient = useCallback(() => {
@@ -162,23 +151,6 @@ export const Gradient: React.FC<GradientProps> = ({
     }
   }, [autoGenerate, generateGradient]);
 
-  // Debug logging for development (remove in production)
-  useEffect(() => {
-    if (__DEV__) {
-      // eslint-disable-next-line no-console
-      console.log("Gradient config:", {
-        colors: gradientConfig.colors,
-        start: gradientConfig.start,
-        end: gradientConfig.end,
-        width,
-        height,
-        direction,
-        blendMode,
-        opacity,
-      });
-    }
-  }, [gradientConfig, width, height, direction, blendMode, opacity]);
-
   // Fallback if no colors are available
   if (gradientConfig.colors.length === 0) {
     return (
@@ -187,7 +159,7 @@ export const Gradient: React.FC<GradientProps> = ({
           <LinearGradient
             start={vec(0, 0)}
             end={vec(width, height)}
-            colors={["#FF6B6B", "#4ECDC4"]}
+            colors={['#FF6B6B', '#4ECDC4']}
           />
         </Rect>
       </Canvas>
@@ -208,7 +180,7 @@ export const Gradient: React.FC<GradientProps> = ({
 };
 
 // Export regenerate function for external use
-Gradient.displayName = "Gradient";
+Gradient.displayName = 'Gradient';
 
 // Export the component with the old name for backward compatibility
 export const RandomGradient = Gradient;

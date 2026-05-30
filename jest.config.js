@@ -12,13 +12,7 @@ const config = {
     '/node_modules/react-native-reanimated/plugin/',
     '/node_modules/@react-native/babel-preset/',
   ],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/android/',
-    '/ios/',
-    '/.expo/',
-    '/app-example/',
-  ],
-}
+  testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/', '/.expo/', '/app-example/'],
+};
 
-module.exports = config
+module.exports = config;

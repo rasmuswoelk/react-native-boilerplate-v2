@@ -1,15 +1,12 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Animated from "react-native-reanimated";
-import { Canvas, Rect, LinearGradient, vec } from "@shopify/react-native-skia";
-import { GradientProps, GradientSpeed } from "./Gradient";
+import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
+import React, { useCallback, useEffect, useState } from 'react';
+import Animated from 'react-native-reanimated';
+import { GradientProps, GradientSpeed } from './Gradient';
 
-export type AnimationType = "shift" | "rotate" | "breathe" | "wave" | "pulse";
+export type AnimationType = 'shift' | 'rotate' | 'breathe' | 'wave' | 'pulse';
 
 export interface AnimatedGradientProps
-  extends Omit<
-    GradientProps,
-    "autoGenerate" | "colorPalette" | "colorCount" | "blendMode"
-  > {
+  extends Omit<GradientProps, 'autoGenerate' | 'colorPalette' | 'colorCount' | 'blendMode'> {
   /**
    * Array of colors for the gradient (required for animated gradient)
    */
@@ -26,15 +23,15 @@ export interface AnimatedGradientProps
   paused?: boolean;
 }
 
-const DEFAULT_COLORS = ["#FF6B6B", "#4ECDC4", "#45B7D1"];
+const DEFAULT_COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1'];
 
 const getAnimationDuration = (speed: GradientSpeed): number => {
   switch (speed) {
-    case "slow":
+    case 'slow':
       return 8000;
-    case "medium":
+    case 'medium':
       return 4000;
-    case "fast":
+    case 'fast':
       return 2000;
     default:
       return 4000;
@@ -46,9 +43,9 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
   width = 256,
   height = 256,
   colors = DEFAULT_COLORS,
-  direction = "diagonal",
-  speed = "medium",
-  animationType = "shift",
+  direction = 'diagonal',
+  speed = 'medium',
+  animationType = 'shift',
   opacity = 1,
   paused = false,
 }) => {
@@ -57,18 +54,18 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
     end: ReturnType<typeof vec>;
   } => {
     switch (direction) {
-      case "horizontal":
+      case 'horizontal':
         return { start: vec(0, height / 2), end: vec(width, height / 2) };
-      case "vertical":
+      case 'vertical':
         return { start: vec(width / 2, 0), end: vec(width / 2, height) };
-      case "diagonal":
+      case 'diagonal':
         return { start: vec(0, 0), end: vec(width, height) };
-      case "radial":
+      case 'radial':
         return {
           start: vec(width / 2, height / 2),
           end: vec(width, height / 2),
         };
-      case "random":
+      case 'random':
       default:
         return {
           start: vec(width * 0.2, height * 0.2),
@@ -105,7 +102,7 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
       let endY = baseVectors.end.y;
 
       switch (animationType) {
-        case "shift":
+        case 'shift':
           const offsetX = (progress - 0.5) * width * 0.2;
           const offsetY = (progress - 0.5) * height * 0.2;
           startX += offsetX;
@@ -114,7 +111,7 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
           endY += offsetY;
           break;
 
-        case "wave":
+        case 'wave':
           const waveOffsetX = Math.sin(time) * width * 0.05;
           const waveOffsetY = Math.cos(time * 0.7) * height * 0.05;
           startX += waveOffsetX;
@@ -123,7 +120,7 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
           endY -= waveOffsetY;
           break;
 
-        case "rotate":
+        case 'rotate':
           const centerX = width / 2;
           const centerY = height / 2;
           const radius = Math.min(width, height) * 0.4;
@@ -135,16 +132,14 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
           endY = centerY - Math.sin(angle) * radius;
           break;
 
-        case "breathe":
-        case "pulse":
+        case 'breathe':
+        case 'pulse':
           const scale = 1 + Math.sin(time) * 0.1;
           const centerXBreathe = width / 2;
           const centerYBreathe = height / 2;
 
-          startX =
-            centerXBreathe + (baseVectors.start.x - centerXBreathe) * scale;
-          startY =
-            centerYBreathe + (baseVectors.start.y - centerYBreathe) * scale;
+          startX = centerXBreathe + (baseVectors.start.x - centerXBreathe) * scale;
+          startY = centerYBreathe + (baseVectors.start.y - centerYBreathe) * scale;
           endX = centerXBreathe + (baseVectors.end.x - centerXBreathe) * scale;
           endY = centerYBreathe + (baseVectors.end.y - centerYBreathe) * scale;
           break;
@@ -163,15 +158,11 @@ export const AnimatedGradient: React.FC<AnimatedGradientProps> = ({
     <Animated.View style={[style, { opacity }]}>
       <Canvas style={{ width, height }}>
         <Rect x={0} y={0} width={width} height={height}>
-          <LinearGradient
-            start={gradientVectors.start}
-            end={gradientVectors.end}
-            colors={colors}
-          />
+          <LinearGradient start={gradientVectors.start} end={gradientVectors.end} colors={colors} />
         </Rect>
       </Canvas>
     </Animated.View>
   );
 };
 
-AnimatedGradient.displayName = "AnimatedGradient";
+AnimatedGradient.displayName = 'AnimatedGradient';
