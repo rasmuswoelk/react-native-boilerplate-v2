@@ -16,7 +16,9 @@
     "pods:install": "cd ios && pod install && cd ..",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "e2e": "maestro test e2e/",
+    "e2e:flow": "maestro test"
   },
   "dependencies": {
     "@babel/preset-react": "^7.27.1",
