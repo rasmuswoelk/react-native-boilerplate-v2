@@ -1,12 +1,12 @@
-import { Card } from "@/lib/components/Card";
-import { Container } from "@/lib/components/Container";
-import { FadeIn } from "@/lib/components/FadeIn";
-import { Stack } from "@/lib/components/Stack";
-import { Typography } from "@/lib/components/Typography";
-import { useUnistyles } from "react-native-unistyles";
-import { getLineHeight } from "@/lib/theme/utils/getLineHeight";
-import { ScrollView } from "react-native";
-import { useTranslation } from "@/lib/i18n";
+import { ScrollView } from 'react-native';
+import { useUnistyles } from 'react-native-unistyles';
+import { Card } from '@/lib/components/Card';
+import { Container } from '@/lib/components/Container';
+import { FadeIn } from '@/lib/components/FadeIn';
+import { Stack } from '@/lib/components/Stack';
+import { Typography } from '@/lib/components/Typography';
+import { useTranslation } from '@/lib/i18n';
+import { getLineHeight } from '@/lib/theme/utils/getLineHeight';
 
 export const TypographyScreen = () => {
   const { theme } = useUnistyles();

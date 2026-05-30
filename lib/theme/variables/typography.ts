@@ -1,4 +1,4 @@
-import { getLineHeight } from "../utils/getLineHeight";
+import { getLineHeight } from '../utils/getLineHeight';
 
 const lineHeight = {
   xs: 1,
@@ -17,23 +17,23 @@ const fontWeight = {
 } as const;
 
 const fontFamily = {
-  primary: "SpaceMono",
+  primary: 'SpaceMono',
 } as const;
 
 const fontSize = {
-  ["3xs"]: 6,
-  ["2xs"]: 10,
+  ['3xs']: 6,
+  ['2xs']: 10,
   xs: 12,
   sm: 14,
   md: 16,
   lg: 18,
   xl: 20,
-  ["2xl"]: 24,
-  ["3xl"]: 32,
-  ["4xl"]: 40,
-  ["5xl"]: 48,
-  ["6xl"]: 56,
-  ["7xl"]: 64,
+  ['2xl']: 24,
+  ['3xl']: 32,
+  ['4xl']: 40,
+  ['5xl']: 48,
+  ['6xl']: 56,
+  ['7xl']: 64,
 } as const;
 
 const variant: Record<
@@ -46,14 +46,14 @@ const variant: Record<
   }
 > = {
   h1: {
-    fontSize: fontSize["3xl"],
+    fontSize: fontSize['3xl'],
     fontWeight: fontWeight.black,
-    lineHeight: getLineHeight(fontSize["3xl"], lineHeight.xl),
+    lineHeight: getLineHeight(fontSize['3xl'], lineHeight.xl),
   },
   h2: {
-    fontSize: fontSize["2xl"],
+    fontSize: fontSize['2xl'],
     fontWeight: fontWeight.bold,
-    lineHeight: getLineHeight(fontSize["2xl"], lineHeight.lg),
+    lineHeight: getLineHeight(fontSize['2xl'], lineHeight.lg),
   },
   h3: {
     fontSize: fontSize.xl,

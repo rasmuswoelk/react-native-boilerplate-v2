@@ -1,26 +1,19 @@
-import { useUnistyles } from "react-native-unistyles";
+import omit from 'lodash/omit';
+import { useMemo } from 'react';
+import { StyleProp, TextProps, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
+import { useUnistyles } from 'react-native-unistyles';
+import { Text } from '@/lib/components/Text';
 import {
   BorderRadiusPath,
   ColorPath,
   getBorderRadiusFromPath,
   getColorFromPath,
-} from "@/lib/theme/utils/colorTypes";
+} from '@/lib/theme/utils/colorTypes';
 import {
   SpacingProps,
   spacingStyleProperties,
   useGetSpacingStylesByComponentProps,
-} from "@/lib/theme/utils/createSpacingProps";
-import omit from "lodash/omit";
-import { useMemo } from "react";
-import {
-  StyleProp,
-  TextProps,
-  TextStyle,
-  View,
-  ViewProps,
-  ViewStyle,
-} from "react-native";
-import { Text } from "@/lib/components/Text";
+} from '@/lib/theme/utils/createSpacingProps';
 
 type BoxBaseProps = {
   color?: ColorPath;
@@ -56,17 +49,13 @@ export const Box = (props: BoxProps) => {
   } = props;
 
   const { theme } = useUnistyles();
-  const componentProps = useMemo(
-    () =>
-      omit(rest, [
-        ...spacingStyleProperties,
-        "color",
-        "backgroundColor",
-        "borderRadius",
-        "as",
-      ]),
-    [rest]
-  );
+  const componentProps = omit(rest, [
+    ...spacingStyleProperties,
+    'color',
+    'backgroundColor',
+    'borderRadius',
+    'as',
+  ]);
   const spacingStyles = useGetSpacingStylesByComponentProps(rest);
 
   const resolvedColor = useMemo(() => {
@@ -74,15 +63,11 @@ export const Box = (props: BoxProps) => {
   }, [color, theme.colors]);
 
   const resolvedBackgroundColor = useMemo(() => {
-    return backgroundColor
-      ? getColorFromPath(theme.colors, backgroundColor)
-      : undefined;
+    return backgroundColor ? getColorFromPath(theme.colors, backgroundColor) : undefined;
   }, [backgroundColor, theme.colors]);
 
   const resolvedBorderRadius = useMemo(() => {
-    return borderRadius
-      ? getBorderRadiusFromPath(theme.borderRadius, borderRadius)
-      : undefined;
+    return borderRadius ? getBorderRadiusFromPath(theme.borderRadius, borderRadius) : undefined;
   }, [borderRadius, theme.borderRadius]);
 
   const styles = useMemo(
@@ -97,31 +82,19 @@ export const Box = (props: BoxProps) => {
       spacingStyles,
       style,
     ],
-    [
-      resolvedColor,
-      resolvedBackgroundColor,
-      resolvedBorderRadius,
-      spacingStyles,
-      style,
-    ]
+    [resolvedColor, resolvedBackgroundColor, resolvedBorderRadius, spacingStyles, style],
   );
 
   if (Component === Text) {
     return (
-      <Text
-        {...(componentProps as TextProps)}
-        style={styles as StyleProp<TextStyle>}
-      >
+      <Text {...(componentProps as TextProps)} style={styles as StyleProp<TextStyle>}>
         {children}
       </Text>
     );
   }
 
   return (
-    <View
-      {...(componentProps as ViewProps)}
-      style={styles as StyleProp<ViewStyle>}
-    >
+    <View {...(componentProps as ViewProps)} style={styles as StyleProp<ViewStyle>}>
       {children}
     </View>
   );

@@ -1,12 +1,12 @@
-import { Box } from "@/lib/components/Box";
-import { Card } from "@/lib/components/Card";
-import { Container } from "@/lib/components/Container";
-import { Stack } from "@/lib/components/Stack";
-import { Typography } from "@/lib/components/Typography";
-import { StyleSheet, useUnistyles } from "react-native-unistyles";
-import { FC } from "react";
-import { ScrollView } from "react-native";
-import { useTranslation } from "@/lib/i18n";
+import { FC } from 'react';
+import { ScrollView } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { Box } from '@/lib/components/Box';
+import { Card } from '@/lib/components/Card';
+import { Container } from '@/lib/components/Container';
+import { Stack } from '@/lib/components/Stack';
+import { Typography } from '@/lib/components/Typography';
+import { useTranslation } from '@/lib/i18n';
 
 const ColorSwatch: FC<{ color: string; name: string }> = ({ color, name }) => {
   return (
@@ -28,20 +28,20 @@ export const ColorsScreen = () => {
 
   const singleColors = Object.entries(theme.colors).reduce(
     (acc, [key, value]) => {
-      if (typeof value === "object") return acc;
+      if (typeof value === 'object') return acc;
       acc[key] = value;
       return acc;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
 
   const colorPalettes = Object.entries(theme.colors).reduce(
     (acc, [key, value]) => {
-      if (typeof value !== "object") return acc;
+      if (typeof value !== 'object') return acc;
       acc[key] = value;
       return acc;
     },
-    {} as Record<string, Record<string, string>>
+    {} as Record<string, Record<string, string>>,
   );
 
   return (
@@ -49,7 +49,7 @@ export const ColorsScreen = () => {
       <Container paddingBottom="lg" paddingTop="lg">
         <Stack direction="vertical" gap="md">
           <Card title={t('playground.colors.baseColors')}>
-            <Stack direction="horizontal" gap="md" style={{ flexWrap: "wrap" }}>
+            <Stack direction="horizontal" gap="md" style={{ flexWrap: 'wrap' }}>
               {Object.entries(singleColors).map(([name, color]) => (
                 <ColorSwatch key={name} color={color} name={name} />
               ))}
@@ -63,7 +63,7 @@ export const ColorsScreen = () => {
                 name: paletteName.charAt(0).toUpperCase() + paletteName.slice(1),
               })}
             >
-              <Stack direction="horizontal" gap="sm" style={{ flexWrap: "wrap" }}>
+              <Stack direction="horizontal" gap="sm" style={{ flexWrap: 'wrap' }}>
                 {Object.entries(palette).map(([shade, color]) => (
                   <ColorSwatch
                     key={`${paletteName}-${shade}`}
@@ -82,7 +82,7 @@ export const ColorsScreen = () => {
 
 const stylesheet = StyleSheet.create((theme) => ({
   colorSwatchContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     minWidth: 80,
     marginBottom: theme.spacing.sm,
   },
@@ -97,13 +97,13 @@ const stylesheet = StyleSheet.create((theme) => ({
     borderColor: theme.colors.gray[300],
   },
   colorName: {
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.colors.gray[700],
-    fontWeight: "600",
+    fontWeight: '600',
     fontSize: 12,
   },
   colorValue: {
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.colors.gray[500],
     fontSize: 10,
   },

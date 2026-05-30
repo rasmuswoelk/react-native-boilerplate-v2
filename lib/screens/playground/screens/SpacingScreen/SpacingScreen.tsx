@@ -1,17 +1,17 @@
-import { Box } from "@/lib/components/Box";
-import { Container } from "@/lib/components/Container";
-import { Typography } from "@/lib/components/Typography";
-import { AnimatedWidthBar } from "@/lib/components/AnimatedWidthBar";
-import { FadeIn, FadeInProps } from "@/lib/components/FadeIn";
-import { useUnistyles } from "react-native-unistyles";
-import { ScrollView } from "react-native";
-import { Card } from "@/lib/components/Card";
-import { useTranslation } from "@/lib/i18n";
+import { ScrollView } from 'react-native';
+import { useUnistyles } from 'react-native-unistyles';
+import { AnimatedWidthBar } from '@/lib/components/AnimatedWidthBar';
+import { Box } from '@/lib/components/Box';
+import { Card } from '@/lib/components/Card';
+import { Container } from '@/lib/components/Container';
+import { FadeIn, FadeInProps } from '@/lib/components/FadeIn';
+import { Typography } from '@/lib/components/Typography';
+import { useTranslation } from '@/lib/i18n';
 
 const fadeInProps: Partial<FadeInProps> = {
   delay: 50,
   duration: 200,
-  animationType: "spring",
+  animationType: 'spring',
   springConfig: { damping: 15 },
   translateY: 20,
 };
@@ -54,13 +54,7 @@ export const SpacingScreen = () => {
         <Card title={t('playground.spacing.values')}>
           <FadeIn>
             {Object.entries(theme.spacing).map(([key, value], index) => (
-              <SpacingItem
-                key={key}
-                spacingKey={key}
-                value={value}
-                index={index}
-                theme={theme}
-              />
+              <SpacingItem key={key} spacingKey={key} value={value} index={index} theme={theme} />
             ))}
           </FadeIn>
         </Card>
@@ -70,11 +64,19 @@ export const SpacingScreen = () => {
             <Typography variant="body" fontWeight="black" marginBottom="sm">
               {t('playground.spacing.marginExamples')}
             </Typography>
-            <Box style={{ backgroundColor: theme.colors.brand[200] }} padding="md" marginBottom="md">
+            <Box
+              style={{ backgroundColor: theme.colors.brand[200] }}
+              padding="md"
+              marginBottom="md"
+            >
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="xs" (4px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="xs">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="xs"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
               <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
@@ -86,7 +88,11 @@ export const SpacingScreen = () => {
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="sm" (8px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="sm">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="sm"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
               <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
@@ -98,7 +104,11 @@ export const SpacingScreen = () => {
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="md" (16px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="md">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="md"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
               <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">
@@ -110,7 +120,11 @@ export const SpacingScreen = () => {
               <Typography variant="caption" marginBottom="xs">
                 {`marginBottom="lg" (24px)`}
               </Typography>
-              <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm" marginBottom="lg">
+              <Box
+                style={{ backgroundColor: theme.colors.gray[200] }}
+                padding="sm"
+                marginBottom="lg"
+              >
                 <Typography variant="caption">Content</Typography>
               </Box>
               <Box style={{ backgroundColor: theme.colors.gray[200] }} padding="sm">

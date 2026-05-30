@@ -1,17 +1,16 @@
-import { Container } from '@/lib/components/Container'
-import { Typography } from '@/lib/components/Typography'
-import { useUnistyles } from 'react-native-unistyles'
-import { router } from 'expo-router'
-import { Pressable, useWindowDimensions, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
-import { AnimatedGradient } from '@/lib/components/Gradient'
-import { FadeIn } from '@/lib/components/FadeIn'
-import { LottieView } from '@/lib/components/LottieView'
-import animation from '@/src/assets/animations/3d-shape-animation.json'
+import { router } from 'expo-router';
+import { Pressable, useWindowDimensions, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useUnistyles } from 'react-native-unistyles';
+import { Container } from '@/lib/components/Container';
+import { FadeIn } from '@/lib/components/FadeIn';
+import { AnimatedGradient } from '@/lib/components/Gradient';
+import { LottieView } from '@/lib/components/LottieView';
+import { Typography } from '@/lib/components/Typography';
+import animation from '@/src/assets/animations/3d-shape-animation.json';
 
 export const GradientBackground = () => {
-  const { width, height } = useWindowDimensions()
+  const { width, height } = useWindowDimensions();
 
   return (
     <AnimatedGradient
@@ -23,11 +22,11 @@ export const GradientBackground = () => {
       animationType="shift"
       speed="slow"
     />
-  )
-}
+  );
+};
 
 const Animation = () => {
-  const { width: windowWidth, height: windowHeight } = useWindowDimensions()
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
   return (
     <View
@@ -50,11 +49,11 @@ const Animation = () => {
         />
       </FadeIn>
     </View>
-  )
-}
+  );
+};
 
 export default function Index() {
-  const { theme } = useUnistyles()
+  const { theme } = useUnistyles();
 
   return (
     <>
@@ -108,5 +107,5 @@ export default function Index() {
       <GradientBackground />
       <Animation />
     </>
-  )
+  );
 }

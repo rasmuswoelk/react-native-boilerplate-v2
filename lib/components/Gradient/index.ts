@@ -1,12 +1,12 @@
 export {
-  Gradient,
-  RandomGradient,
-  type GradientProps,
-  type GradientDirection,
-  type GradientSpeed,
-} from "./Gradient";
-export {
   AnimatedGradient,
   type AnimatedGradientProps,
   type AnimationType,
-} from "./AnimatedGradient";
+} from './AnimatedGradient';
+export {
+  Gradient,
+  type GradientDirection,
+  type GradientProps,
+  type GradientSpeed,
+  RandomGradient,
+} from './Gradient';
