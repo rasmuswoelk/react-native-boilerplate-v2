@@ -16,20 +16,21 @@ Decide which test layer before writing anything:
 ### File placement
 `lib/path/to/__tests__/filename.test.ts` (`.tsx` for components)
 
-### Mock declarations — always at the very top of the file, before imports
+### When to mock — declarations go at the top of the file, before imports
 
-For any test touching a component or importing from `react-native` or `react-native-unistyles`:
+**`react-native`** — only when the code under test calls a native RN API at runtime (e.g. `PixelRatio`). A type-only import like `import { ViewStyle } from 'react-native'` is stripped at compile time and needs no mock.
 ```ts
 jest.mock('react-native')
-jest.mock('react-native-unistyles')
 ```
 
-For i18n tests:
+**`react-native-unistyles`** — never needed. It is globally mocked by `setupFiles` (`react-native-unistyles/mocks` + `src/unistyles.ts`), which wires the real theme into the mock. Do not add this to individual test files.
+
+**`expo-localization`** — when the code under test calls `getLocales()` or similar locale APIs:
 ```ts
 jest.mock('expo-localization')
 ```
 
-For Typography specifically (blocks `@expo-google-fonts` imports):
+**Font imports** — Typography and any component that imports from `@/src/theme/fonts` (which pulls in `@expo-google-fonts` packages):
 ```ts
 jest.mock('@/src/theme/fonts', () => ({
   fontMapper: {
@@ -63,9 +64,9 @@ const { getByTestId } = render(<Box testID="box" marginTop="sm" />)
 expect(getByTestId('box')).toHaveStyle({ marginTop: 8 })
 ```
 
-### Mock theme values
+### Theme values in assertions
 
-The unistyles mock returns the lightTheme shape from `src/unistyles.ts`. Key values:
+The unistyles mock runs `src/unistyles.ts` during setup, so tests receive the real `lightTheme`. Key values to use in `toHaveStyle` assertions:
 
 | Token | Key | Value |
 |-------|-----|-------|

@@ -1,6 +1,3 @@
-jest.mock('react-native')
-jest.mock('react-native-unistyles')
-
 import {
   createSpacingStyles,
   getSpacingPropertiesByComponentProps,
