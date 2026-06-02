@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-import { zustandStorage } from './storage';
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { zustandStorage } from "@/lib/stores/storage";
 
 type PreferencesState = {
   onboardingCompleted: boolean;
@@ -20,12 +20,13 @@ export const usePreferencesStore = create<PreferencesState>()(
     (set) => ({
       ...defaults,
       completeOnboarding: () => set({ onboardingCompleted: true }),
-      setNotificationsEnabled: (enabled) => set({ notificationsEnabled: enabled }),
+      setNotificationsEnabled: (enabled) =>
+        set({ notificationsEnabled: enabled }),
       reset: () => set(defaults),
     }),
     {
-      name: 'preferences',
+      name: "preferences",
       storage: createJSONStorage(() => zustandStorage),
-    },
-  ),
+    }
+  )
 );

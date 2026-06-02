@@ -1,4 +1,4 @@
-import '@/src/unistyles';
+import '@/src/theme/theme';
 import '@/src/i18n';
 import { Stack } from 'expo-router';
 import { AppLayout } from '@/src/layouts/AppLayout';
