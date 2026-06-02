@@ -91,6 +91,8 @@ PODS:
     - RNScreens
   - ExpoSplashScreen (56.0.10):
     - ExpoModulesCore
+  - ExpoSQLite (56.0.4):
+    - ExpoModulesCore
   - ExpoSymbols (56.0.5):
     - ExpoModulesCore
   - ExpoSystemUI (56.0.5):
@@ -2359,6 +2361,7 @@ DEPENDENCIES:
   - "ExpoModulesWorkletsAdapter (from `../node_modules/.pnpm/expo-modules-core@56.0.12_react-native-worklets@0.8.3_@babel+core@7.29.7_@react-native+_ed01e5d29dfc6f19613a270c1b566abf/node_modules/expo-modules-core`)"
   - "ExpoRouter (from `../node_modules/.pnpm/expo-router@56.2.6_b8b4d6fd8b064f91246ab94555420c56/node_modules/expo-router/ios`)"
   - "ExpoSplashScreen (from `../node_modules/.pnpm/expo-splash-screen@56.0.10_expo@56.0.4_typescript@6.0.3/node_modules/expo-splash-screen/ios`)"
+  - "ExpoSQLite (from `../node_modules/.pnpm/expo-sqlite@56.0.4_expo@56.0.4_react-native@0.85.3_@babel+core@7.29.7_@react-native-com_106b7ab80a022b0e778e7b163d2508fb/node_modules/expo-sqlite/ios`)"
   - "ExpoSymbols (from `../node_modules/.pnpm/expo-symbols@56.0.5_expo-font@56.0.5_expo@56.0.4_react-native@0.85.3_@babel+core@7.29.7_0b78d958b3852d7aef1695d4a3cff9fd/node_modules/expo-symbols/ios`)"
   - "ExpoSystemUI (from `../node_modules/.pnpm/expo-system-ui@56.0.5_expo@56.0.4_react-native-web@0.21.2_react-dom@19.2.3_react@19.2.3_df95acf63242890f0dd5ce0119340555/node_modules/expo-system-ui/ios`)"
   - "ExpoUI (from `../node_modules/.pnpm/@expo+ui@56.0.13_f0701550d15bf99cff9ccc23ba6c65c9/node_modules/@expo/ui/ios`)"
@@ -2497,6 +2500,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/expo-router@56.2.6_b8b4d6fd8b064f91246ab94555420c56/node_modules/expo-router/ios"
   ExpoSplashScreen:
     :path: "../node_modules/.pnpm/expo-splash-screen@56.0.10_expo@56.0.4_typescript@6.0.3/node_modules/expo-splash-screen/ios"
+  ExpoSQLite:
+    :path: "../node_modules/.pnpm/expo-sqlite@56.0.4_expo@56.0.4_react-native@0.85.3_@babel+core@7.29.7_@react-native-com_106b7ab80a022b0e778e7b163d2508fb/node_modules/expo-sqlite/ios"
   ExpoSymbols:
     :path: "../node_modules/.pnpm/expo-symbols@56.0.5_expo-font@56.0.5_expo@56.0.4_react-native@0.85.3_@babel+core@7.29.7_0b78d958b3852d7aef1695d4a3cff9fd/node_modules/expo-symbols/ios"
   ExpoSystemUI:
@@ -2700,6 +2705,7 @@ SPEC CHECKSUMS:
   ExpoModulesWorkletsAdapter: d18ef93b3f5c635ad2d8ff8865e811c9a288e240
   ExpoRouter: c27aaf73189f6f781f9db7b7095191f2d366727b
   ExpoSplashScreen: 6deba2c0000d89a38dc192ebbee1656a0fbb0b70
+  ExpoSQLite: 60a026ba25c2dc5e977cc62228a25393acffdd9b
   ExpoSymbols: 773655e2ad7b6bd6672b9c177a57f60cbc70eed8
   ExpoSystemUI: 5b9bfd2ccc7933ee41711b8cddabecd1eed697e2
   ExpoUI: c2cb032dcb7ad9eb71496b07542c2bcbb8b7919e
