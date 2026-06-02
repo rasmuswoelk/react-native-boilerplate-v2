@@ -11,6 +11,7 @@
     "ios:alternate-port": "RCT_METRO_PORT=8083 pnpm exec expo run:ios --port 8083",
     "web": "expo start --web",
     "lint": "biome check .",
+    "tsc": "tsc --noEmit",
     "typecheck": "tsc",
     "clean": "npx react-native clean",
     "pods:install": "cd ios && pod install && cd ..",
