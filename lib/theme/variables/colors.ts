@@ -1,6 +1,4 @@
 export const colors = {
-  ground: '#fff',
-  figure: '#000',
   white: '#fff',
   black: '#000',
   red: {

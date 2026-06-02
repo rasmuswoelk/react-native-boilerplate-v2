@@ -9,7 +9,7 @@ import {
 } from '@/lib/theme/utils/createSpacingProps';
 import { getLineHeight } from '@/lib/theme/utils/getLineHeight';
 import { fontMapper } from '@/src/theme/fonts';
-import type { AppTheme } from '@/src/unistyles';
+import type { AppTheme } from '@/src/theme/theme';
 
 export type TypographyProps = Omit<BoxProps, 'as'> &
   SpacingProps &

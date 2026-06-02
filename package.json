@@ -39,6 +39,7 @@
     "expo-localization": "56.0.6",
     "expo-router": "56.2.8",
     "expo-splash-screen": "56.0.10",
+    "expo-sqlite": "56.0.4",
     "expo-status-bar": "56.0.4",
     "expo-symbols": "56.0.5",
     "expo-system-ui": "56.0.5",
@@ -51,13 +52,15 @@
     "react-i18next": "17.0.8",
     "react-native": "0.85.3",
     "react-native-gesture-handler": "3.0.0",
+    "react-native-mmkv": "4.3.1",
     "react-native-reanimated": "4.4.0",
     "react-native-safe-area-context": "5.8.0",
     "react-native-screens": "4.25.2",
     "react-native-unistyles": "3.2.5",
     "react-native-web": "0.21.2",
     "react-native-webview": "13.16.1",
-    "react-native-worklets": "0.9.1"
+    "react-native-worklets": "0.9.1",
+    "zustand": "5.0.14"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.16",
