@@ -54,7 +54,8 @@
       "Bash(gh pr create --title 'feat: add Storybook \\(on-device, CSF3, Controls/Actions/Backgrounds\\)' --body ' *)",
       "Bash(pnpm test:run src/stores)",
       "Bash(gh pr create --title 'feat: add zustand for global state management' --body ' *)",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['version']\\); print\\(d.get\\('main',''\\)\\); print\\(d.get\\('types',''\\)\\)\")"
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['version']\\); print\\(d.get\\('main',''\\)\\); print\\(d.get\\('types',''\\)\\)\")",
+      "Bash(gh pr *)"
     ]
   }
 }
