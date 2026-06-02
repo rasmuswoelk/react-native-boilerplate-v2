@@ -129,6 +129,32 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
+  - MMKVCore (2.4.0)
+  - NitroMmkv (4.3.1):
+    - hermes-engine
+    - MMKVCore (= 2.4.0)
+    - NitroModules
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - NitroModules (0.35.7):
     - hermes-engine
     - RCTRequired
@@ -2340,6 +2366,7 @@ DEPENDENCIES:
   - "FBLazyVector (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._e07f2669c12f9cfa704fb33237eced92/node_modules/react-native/Libraries/FBLazyVector`)"
   - "hermes-engine (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._e07f2669c12f9cfa704fb33237eced92/node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)"
   - "lottie-react-native (from `../node_modules/.pnpm/lottie-react-native@7.3.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-communit_f3e9cc4b2b4892f2a0e5d574abe63e2d/node_modules/lottie-react-native`)"
+  - "NitroMmkv (from `../node_modules/.pnpm/react-native-mmkv@4.3.1_react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+co_b9c0609ebfe99182fba734c99e8e02f4/node_modules/react-native-mmkv`)"
   - "NitroModules (from `../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_950ffe909cb8b715545f98fe1189d0e2/node_modules/react-native-nitro-modules`)"
   - "RCTDeprecation (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._e07f2669c12f9cfa704fb33237eced92/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)"
   - "RCTRequired (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.0.0_typescript@6._e07f2669c12f9cfa704fb33237eced92/node_modules/react-native/Libraries/Required`)"
@@ -2427,6 +2454,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - lottie-ios
+    - MMKVCore
 
 EXTERNAL SOURCES:
   EXConstants:
@@ -2484,6 +2512,8 @@ EXTERNAL SOURCES:
     :tag: hermes-v250829098.0.10
   lottie-react-native:
     :path: "../node_modules/.pnpm/lottie-react-native@7.3.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-communit_f3e9cc4b2b4892f2a0e5d574abe63e2d/node_modules/lottie-react-native"
+  NitroMmkv:
+    :path: "../node_modules/.pnpm/react-native-mmkv@4.3.1_react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+co_b9c0609ebfe99182fba734c99e8e02f4/node_modules/react-native-mmkv"
   NitroModules:
     :path: "../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_950ffe909cb8b715545f98fe1189d0e2/node_modules/react-native-nitro-modules"
   RCTDeprecation:
@@ -2678,6 +2708,8 @@ SPEC CHECKSUMS:
   hermes-engine: f35037256b618c550489108cf50a589d5e59713a
   lottie-ios: 8f959969761e9c45d70353667d00af0e5b9cadb3
   lottie-react-native: 116398d27ee6f92ad2adb51f581da7ed30cf2b86
+  MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
+  NitroMmkv: 1ff46eceb958298b1d7c013a6314432438b77a62
   NitroModules: ecbafa6d6e6297ff1c240b40ee027aea48ec4bf4
   RCTDeprecation: a4c521821fab57cbb125b36effe84d897d0dfa12
   RCTRequired: 9f3a7e5645d4bc3f551593de7550bb66ab6e42bc

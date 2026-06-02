@@ -1,4 +1,4 @@
-import type { AppTheme } from '@/src/unistyles';
+import type { AppTheme } from '@/src/theme/theme';
 
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object

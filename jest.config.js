@@ -1,7 +1,7 @@
 /** @type {import('jest').Config} */
 const config = {
   preset: 'jest-expo',
-  setupFiles: ['react-native-unistyles/mocks', './src/unistyles.ts'],
+  setupFiles: ['react-native-unistyles/mocks', './src/theme/theme.ts'],
   setupFilesAfterEnv: ['./test/setup.ts', '@testing-library/react-native/matchers'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
