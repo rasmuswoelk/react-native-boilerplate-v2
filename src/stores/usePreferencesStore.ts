@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { zustandStorage } from './storage';
+import { zustandStorage } from '@/lib/stores/storage';
 
 type PreferencesState = {
   onboardingCompleted: boolean;
