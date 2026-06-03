@@ -43,7 +43,18 @@
       "WebFetch(domain:www.unistyl.es)",
       "Bash(npx jest *)",
       "Bash(pnpm test *)",
-      "Skill(superpowers:systematic-debugging)"
+      "Skill(superpowers:systematic-debugging)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm pods:install)",
+      "Bash(gh pr create --title 'feat: install expo-sqlite for local database support' --body ' *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('expo', {}\\).get\\('web', {}\\), indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('version'\\)\\); print\\(list\\(d.get\\('exports', {}\\).keys\\(\\)\\)[:10]\\)\")",
+      "Bash(pnpm lint *)",
+      "Bash(grep -v \"^$\")",
+      "Bash(gh pr create --title 'feat: add Storybook \\(on-device, CSF3, Controls/Actions/Backgrounds\\)' --body ' *)",
+      "Bash(pnpm test:run src/stores)",
+      "Bash(gh pr create --title 'feat: add zustand for global state management' --body ' *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['version']\\); print\\(d.get\\('main',''\\)\\); print\\(d.get\\('types',''\\)\\)\")"
     ]
   }
 }
