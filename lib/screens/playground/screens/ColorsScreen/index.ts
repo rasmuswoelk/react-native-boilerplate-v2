@@ -1,1 +1,0 @@
-export { ColorsScreen } from './ColorsScreen';

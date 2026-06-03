@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Box } from '../Box';
-import { Typography } from '../Typography';
-import { Stack } from './Stack';
+import { Box } from '@/lib/components/Box';
+import { Stack } from '@/lib/components/Stack';
+import { Typography } from '@/lib/components/Typography';
 
 const meta: Meta<typeof Stack> = {
   title: 'Components/Stack',
@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof Stack>;
 
 const Item = ({ label }: { label: string }) => (
-  <Box backgroundColor="brand.200" p="sm" borderRadius="sm">
+  <Box backgroundColor="brand.200" padding="sm" borderRadius="sm">
     <Typography>{label}</Typography>
   </Box>
 );
@@ -53,7 +53,7 @@ export const GapSizes: Story = {
     <Stack direction="vertical" gap="xl">
       {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((gap) => (
         <Box key={gap}>
-          <Typography variant="caption" mb="xs">
+          <Typography variant="caption" marginBottom="xs">
             gap=&quot;{gap}&quot;
           </Typography>
           <Stack direction="horizontal" gap={gap}>

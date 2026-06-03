@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import { View } from 'react-native';
-import { Typography } from './Typography';
+import { useUnistyles } from 'react-native-unistyles';
+import { Typography } from '@/lib/components/Typography';
 
 const meta: Meta<typeof Typography> = {
   title: 'Components/Typography',
@@ -55,15 +56,19 @@ export const FontWeights: Story = {
 };
 
 export const FontSizes: Story = {
-  render: () => (
-    <View style={{ gap: 8 }}>
-      {(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const).map((size) => (
-        <Typography key={size} fontSize={size}>
-          {size} — The quick brown fox
-        </Typography>
-      ))}
-    </View>
-  ),
+  render: () => {
+    const { theme } = useUnistyles();
+
+    return (
+      <View style={{ gap: 8 }}>
+        {Object.entries(theme.typography.fontSize).map(([size, value]) => (
+          <Typography key={size} fontSize={size as keyof typeof theme.typography.fontSize}>
+            {size} ({value})
+          </Typography>
+        ))}
+      </View>
+    );
+  },
 };
 
 export const Alignment: Story = {

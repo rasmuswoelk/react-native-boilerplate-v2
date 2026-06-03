@@ -1,6 +1,6 @@
 import '@/src/theme/theme';
 import '@/src/i18n';
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import { AppLayout } from '@/src/layouts/AppLayout';
 import 'react-native-reanimated';
 
@@ -10,8 +10,9 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="playground" options={{ headerShown: false }} />
-        <Stack.Screen name="storybook" options={{ title: 'Storybook' }} />
+        <Stack.Screen name="storybook" options={{ headerShown: false }} />
       </Stack>
+      {process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true' && <Redirect href="/storybook" />}
     </AppLayout>
   );
 }

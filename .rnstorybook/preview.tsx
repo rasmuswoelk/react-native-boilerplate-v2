@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-native';
 import { View } from 'react-native';
-import '@/src/unistyles';
+import '@/src/theme/theme';
 import '@/src/i18n';
 
 const preview: Preview = {

@@ -1,12 +1,14 @@
-import i18next from 'i18next';
-
 jest.mock('expo-localization');
 
 import { createI18n } from '../createI18n';
 
 const resources = {
   en: {
-    translation: { greeting: 'Hello', items: '{{count}} item', items_other: '{{count}} items' },
+    translation: {
+      greeting: 'Hello',
+      items: '{{count}} item',
+      items_other: '{{count}} items',
+    },
   },
   da: {
     translation: {
@@ -17,11 +19,16 @@ const resources = {
   },
 };
 
+type TestKey = keyof (typeof resources)['en']['translation'];
+type TestI18n = Omit<ReturnType<typeof createI18n>, 't'> & {
+  t(key: TestKey): string;
+};
+
 describe('createI18n', () => {
-  let i18n: typeof i18next;
+  let i18n: TestI18n;
 
   beforeAll(() => {
-    i18n = createI18n(resources);
+    i18n = createI18n(resources) as unknown as TestI18n;
   });
 
   it('returns an initialized i18next instance', () => {
