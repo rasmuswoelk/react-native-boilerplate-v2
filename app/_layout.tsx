@@ -9,7 +9,6 @@ export default function RootLayout() {
     <AppLayout>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="playground" options={{ headerShown: false }} />
         <Stack.Screen name="storybook" options={{ headerShown: false }} />
       </Stack>
       {process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true' && <Redirect href="/storybook" />}

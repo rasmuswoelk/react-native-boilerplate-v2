@@ -1,7 +1,5 @@
-import { router } from 'expo-router';
-import { Pressable, useWindowDimensions, View } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useUnistyles } from 'react-native-unistyles';
 import { Container } from '@/lib/components/Container';
 import { FadeIn } from '@/lib/components/FadeIn';
 import { AnimatedGradient } from '@/lib/components/Gradient';
@@ -53,8 +51,6 @@ const Animation = () => {
 };
 
 export default function Index() {
-  const { theme } = useUnistyles();
-
   return (
     <>
       <SafeAreaView style={{ flex: 1, zIndex: 10, position: 'relative' }}>
@@ -73,35 +69,6 @@ export default function Index() {
               </Typography>
             </Typography>
           </FadeIn>
-          <View style={{ marginTop: 'auto', width: '100%' }}>
-            <FadeIn delay={1200} translateY={10} duration={600}>
-              <Pressable
-                style={{
-                  backgroundColor: theme.colors.white,
-                  paddingHorizontal: theme.spacing.lg,
-                  height: 56,
-                  borderRadius: 50,
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onPress={() => router.push('/playground')}
-              >
-                <Typography
-                  fontSize="lg"
-                  lineHeight={1.35}
-                  fontWeight="bold"
-                  fontFamily="primary"
-                  textAlign="center"
-                  letterSpacing={0.4}
-                  color="gray.800"
-                >
-                  Enter the playground
-                </Typography>
-              </Pressable>
-            </FadeIn>
-          </View>
         </Container>
       </SafeAreaView>
       <GradientBackground />
