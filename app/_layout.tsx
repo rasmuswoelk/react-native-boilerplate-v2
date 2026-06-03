@@ -10,6 +10,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="playground" options={{ headerShown: false }} />
+        <Stack.Screen name="storybook" options={{ title: 'Storybook' }} />
       </Stack>
     </AppLayout>
   );
