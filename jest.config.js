@@ -8,7 +8,7 @@ const config = {
   },
   // Extends jest-expo's base pattern with extra packages that need transformation
   transformIgnorePatterns: [
-    '/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|react-native-unistyles|react-native-worklets|@shopify/react-native-skia|lottie-react-native|@op-engineering/op-sqlite|@powersync/react-native|@powersync/op-sqlite|@powersync/drizzle-driver|@powersync/common|drizzle-orm))',
+    '/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|react-native-unistyles|react-native-worklets|@shopify/react-native-skia|lottie-react-native|@op-engineering/op-sqlite|@powersync/react-native|@powersync/react|@powersync/op-sqlite|@powersync/drizzle-driver|@powersync/common|drizzle-orm))',
     '/node_modules/react-native-reanimated/plugin/',
     '/node_modules/@react-native/babel-preset/',
   ],
