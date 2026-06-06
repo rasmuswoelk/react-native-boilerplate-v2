@@ -13,15 +13,15 @@ import {
 import { db } from '@/src/database/client';
 import { eq } from 'drizzle-orm';
 
-const mockReturning = jest.fn();
-const mockWhere = jest.fn(() => ({ returning: mockReturning }));
-const mockSet = jest.fn(() => ({ where: mockWhere }));
-const mockValues = jest.fn(() => ({ returning: mockReturning }));
-const mockInsert = jest.fn(() => ({ values: mockValues }));
-const mockUpdate = jest.fn(() => ({ set: mockSet }));
-const mockDelete = jest.fn(() => ({ where: mockWhere }));
-const mockFrom = jest.fn(() => ({ where: mockWhere }));
-const mockSelect = jest.fn(() => ({ from: mockFrom }));
+const mockReturning = jest.fn() as any;
+const mockWhere = jest.fn(() => ({ returning: mockReturning })) as any;
+const mockSet = jest.fn(() => ({ where: mockWhere })) as any;
+const mockValues = jest.fn(() => ({ returning: mockReturning })) as any;
+const mockInsert = jest.fn(() => ({ values: mockValues })) as any;
+const mockUpdate = jest.fn(() => ({ set: mockSet })) as any;
+const mockDelete = jest.fn(() => ({ where: mockWhere })) as any;
+const mockFrom = jest.fn(() => ({ where: mockWhere })) as any;
+const mockSelect = jest.fn(() => ({ from: mockFrom })) as any;
 
 (db as any).insert = mockInsert;
 (db as any).update = mockUpdate;
@@ -60,7 +60,7 @@ describe('trip queries', () => {
   });
 
   it('deleteTrip removes the record', async () => {
-    mockWhere.mockResolvedValueOnce(undefined);
+    mockWhere.mockResolvedValueOnce(null);
     await deleteTrip('trip-1');
     expect(mockDelete).toHaveBeenCalled();
   });
