@@ -128,9 +128,7 @@
       "indexes": {
         "inventory_items_category_id_idx": {
           "name": "inventory_items_category_id_idx",
-          "columns": [
-            "category_id"
-          ],
+          "columns": ["category_id"],
           "isUnique": false
         }
       },
@@ -219,10 +217,7 @@
       "indexes": {
         "packing_list_items_list_id_sort_order_idx": {
           "name": "packing_list_items_list_id_sort_order_idx",
-          "columns": [
-            "packing_list_id",
-            "sort_order"
-          ],
+          "columns": ["packing_list_id", "sort_order"],
           "isUnique": false
         }
       },
@@ -357,10 +352,7 @@
       "indexes": {
         "trip_items_trip_id_sort_order_idx": {
           "name": "trip_items_trip_id_sort_order_idx",
-          "columns": [
-            "trip_id",
-            "sort_order"
-          ],
+          "columns": ["trip_id", "sort_order"],
           "isUnique": false
         }
       },
@@ -454,10 +446,7 @@
       "indexes": {
         "trip_locations_trip_id_sort_order_idx": {
           "name": "trip_locations_trip_id_sort_order_idx",
-          "columns": [
-            "trip_id",
-            "sort_order"
-          ],
+          "columns": ["trip_id", "sort_order"],
           "isUnique": false
         }
       },
