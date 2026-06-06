@@ -22,6 +22,21 @@ Code in `lib/` must be portable to any project built from this boilerplate witho
 
 No barrel `index.ts` files at the `lib/` root.
 
+### src/features/ — feature modules
+
+Each feature lives under `src/features/<feature>/` and follows this layout:
+
+- **screens/** — Screen components for the feature (e.g. `TripListScreen.tsx`)
+- **database/** — Schema, types, queries, hooks (see database-feature skill)
+
+Screen components import from within their feature. They are imported by `app/` route files, which are thin entry points — one import and one default export, no logic.
+
+```ts
+// app/trips/index.tsx
+import { TripListScreen } from '@/src/features/trips/screens/TripListScreen';
+export default TripListScreen;
+```
+
 ### src/ — app code
 
 Everything specific to this application:
