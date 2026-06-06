@@ -129,6 +129,8 @@ When a PowerSync backend is ready, pass a `backendConnector` to the PowerSync in
 
 All primary keys are client-generated UUIDs — required for PowerSync's CRDT-based sync. Booleans are stored as `integer` (0/1), SQLite has no native boolean type. JSON arrays are stored as `text`.
 
+`trip_items.name` and `packing_list_items.name` are denormalized copies of the item name — stored even when `inventory_item_id` is set, so display never requires a join to `inventory_items`.
+
 ### `categories`
 | Column | Type | Notes |
 |---|---|---|
@@ -202,6 +204,8 @@ All primary keys are client-generated UUIDs — required for PowerSync's CRDT-ba
 | is_optional | integer | 0\|1, default 0 |
 | notes | text | optional |
 | sort_order | integer | |
+| created_at | integer | unix ms |
+| updated_at | integer | unix ms |
 
 ### `trip_items`
 | Column | Type | Notes |
@@ -213,6 +217,8 @@ All primary keys are client-generated UUIDs — required for PowerSync's CRDT-ba
 | quantity | integer | default 1 |
 | is_packed | integer | 0\|1, default 0 |
 | sort_order | integer | |
+| created_at | integer | unix ms |
+| updated_at | integer | unix ms |
 
 ### `trip_usage_reviews`
 | Column | Type | Notes |
@@ -222,6 +228,8 @@ All primary keys are client-generated UUIDs — required for PowerSync's CRDT-ba
 | trip_item_id | text | FK → trip_items.id |
 | status | text | 'used'\|'not_used'\|'no_response' |
 | reviewed_at | integer | unix ms |
+| created_at | integer | unix ms |
+| updated_at | integer | unix ms |
 
 ### Relationships
 
