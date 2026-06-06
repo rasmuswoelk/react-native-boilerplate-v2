@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
-import { useQuery } from '@powersync/react-native';
 import { toCompilableQuery } from '@powersync/drizzle-driver';
+import { useQuery } from '@powersync/react-native';
+import { useMemo } from 'react';
 import { db } from '@/src/database/client';
 import { inventoryItems } from '../schema';
 import type { InventoryItemEntity } from '../types';

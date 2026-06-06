@@ -1,4 +1,4 @@
-import { tripItems, tripLocations, tripUsageReviews, trips } from './schema';
+import { tripItems, tripLocations, trips, tripUsageReviews } from './schema';
 
 export type TripEntity = typeof trips.$inferSelect;
 export type NewTripEntity = typeof trips.$inferInsert;

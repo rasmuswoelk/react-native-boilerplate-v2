@@ -29,10 +29,7 @@ export async function deleteInventoryItem(id: InventoryItemEntity['id']): Promis
 export async function getInventoryItemById(
   id: InventoryItemEntity['id'],
 ): Promise<InventoryItemEntity | null> {
-  const [item] = await db
-    .select()
-    .from(inventoryItems)
-    .where(eq(inventoryItems.id, id));
+  const [item] = await db.select().from(inventoryItems).where(eq(inventoryItems.id, id));
   return item ?? null;
 }
 

@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { db } from '@/src/database/client';
-import { tripItems, tripLocations, tripUsageReviews, trips } from './schema';
+import { tripItems, tripLocations, trips, tripUsageReviews } from './schema';
 import type {
   NewTripEntity,
   NewTripItemEntity,
@@ -21,11 +21,7 @@ export async function updateTrip(
   id: TripEntity['id'],
   input: Partial<NewTripEntity>,
 ): Promise<TripEntity> {
-  const [updated] = await db
-    .update(trips)
-    .set(input)
-    .where(eq(trips.id, id))
-    .returning();
+  const [updated] = await db.update(trips).set(input).where(eq(trips.id, id)).returning();
   return updated;
 }
 
@@ -84,11 +80,7 @@ export async function updateTripItem(
   id: TripItemEntity['id'],
   input: Partial<NewTripItemEntity>,
 ): Promise<TripItemEntity> {
-  const [updated] = await db
-    .update(tripItems)
-    .set(input)
-    .where(eq(tripItems.id, id))
-    .returning();
+  const [updated] = await db.update(tripItems).set(input).where(eq(tripItems.id, id)).returning();
   return updated;
 }
 

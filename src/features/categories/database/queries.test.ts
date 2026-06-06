@@ -30,18 +30,18 @@ jest.mock('@/src/database/client', () => {
 
 jest.mock('drizzle-orm', () => ({ eq: jest.fn() }));
 
-import { createCategory, deleteCategory, getCategoryById, updateCategory } from './queries';
 import * as clientModule from '@/src/database/client';
+import { createCategory, deleteCategory, getCategoryById, updateCategory } from './queries';
 
 const mockClient = clientModule as any;
 const mockReturning = mockClient.mockReturning;
 const mockWhere = mockClient.mockWhere;
-const mockSet = mockClient.mockSet;
-const mockValues = mockClient.mockValues;
+const _mockSet = mockClient.mockSet;
+const _mockValues = mockClient.mockValues;
 const mockInsert = mockClient.mockInsert;
 const mockUpdate = mockClient.mockUpdate;
 const mockDelete = mockClient.mockDelete;
-const mockSelect = mockClient.mockSelect;
+const _mockSelect = mockClient.mockSelect;
 
 const now = Date.now();
 const mockCategory = { id: 'cat-1', name: 'Clothing', icon: null, createdAt: now, updatedAt: now };
@@ -51,7 +51,12 @@ describe('category queries', () => {
 
   it('createCategory inserts and returns the new record', async () => {
     mockReturning.mockResolvedValueOnce([mockCategory]);
-    const result = await createCategory({ id: 'cat-1', name: 'Clothing', createdAt: now, updatedAt: now });
+    const result = await createCategory({
+      id: 'cat-1',
+      name: 'Clothing',
+      createdAt: now,
+      updatedAt: now,
+    });
     expect(mockInsert).toHaveBeenCalled();
     expect(result).toEqual(mockCategory);
   });

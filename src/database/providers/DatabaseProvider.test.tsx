@@ -1,6 +1,7 @@
 // src/database/providers/DatabaseProvider.test.tsx
 import { render, waitFor } from '@testing-library/react-native';
 import { Text } from 'react-native';
+import * as databaseClient from '@/src/database/client';
 import { DatabaseProvider } from './DatabaseProvider';
 
 jest.mock('@/src/database/client', () => ({
@@ -27,16 +28,13 @@ describe('DatabaseProvider', () => {
   });
 
   it('renders error message when init fails', async () => {
-    const { powerSyncDb } = require('@/src/database/client');
-    (powerSyncDb.init as jest.Mock).mockRejectedValueOnce(new Error('DB failed'));
+    jest.mocked(databaseClient.powerSyncDb.init).mockRejectedValueOnce(new Error('DB failed'));
 
     const { getByText } = render(
       <DatabaseProvider>
         <Text>ready</Text>
       </DatabaseProvider>,
     );
-    await waitFor(() =>
-      expect(getByText(/Database failed to initialize: DB failed/)).toBeTruthy(),
-    );
+    await waitFor(() => expect(getByText(/Database failed to initialize: DB failed/)).toBeTruthy());
   });
 });

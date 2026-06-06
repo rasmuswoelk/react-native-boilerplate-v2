@@ -1,11 +1,18 @@
-import { createList, deleteList, getListById, updateList } from './queries';
 import { db } from '@/src/database/client';
+import { createList, deleteList, getListById, updateList } from './queries';
 
 jest.mock('@/src/database/client');
 jest.mock('drizzle-orm', () => ({ eq: jest.fn() }));
 
 const now = Date.now();
-const mockList = { id: 'list-1', name: 'Weekend Trip', description: null, tags: '[]', createdAt: now, updatedAt: now };
+const mockList = {
+  id: 'list-1',
+  name: 'Weekend Trip',
+  description: null,
+  tags: '[]',
+  createdAt: now,
+  updatedAt: now,
+};
 
 describe('packing list queries', () => {
   beforeEach(() => jest.clearAllMocks());
@@ -16,7 +23,13 @@ describe('packing list queries', () => {
         returning: jest.fn().mockResolvedValueOnce([mockList]),
       }),
     });
-    const result = await createList({ id: 'list-1', name: 'Weekend Trip', tags: '[]', createdAt: now, updatedAt: now });
+    const result = await createList({
+      id: 'list-1',
+      name: 'Weekend Trip',
+      tags: '[]',
+      createdAt: now,
+      updatedAt: now,
+    });
     expect(db.insert).toHaveBeenCalled();
     expect(result).toEqual(mockList);
   });

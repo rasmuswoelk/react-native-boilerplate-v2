@@ -3,9 +3,9 @@ jest.mock('@powersync/drizzle-driver');
 jest.mock('../schema');
 jest.mock('@/src/database/client');
 
+import { useQuery } from '@powersync/react-native';
 import { renderHook } from '@testing-library/react-native';
 import { useCategories } from './useCategories';
-import { useQuery } from '@powersync/react-native';
 
 describe('useCategories', () => {
   beforeEach(() => {

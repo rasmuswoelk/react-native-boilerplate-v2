@@ -1,7 +1,8 @@
 // src/database/providers/DatabaseProvider.tsx
+
+import { PowerSyncContext } from '@powersync/react-native';
 import { ReactNode, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
-import { PowerSyncContext } from '@powersync/react-native';
 import { db, powerSyncDb } from '../client';
 import { DatabaseContext } from './DatabaseContext';
 
@@ -15,9 +16,7 @@ export function DatabaseProvider({ children }: Props) {
     powerSyncDb
       .init()
       .then(() => setReady(true))
-      .catch((e: unknown) =>
-        setError(e instanceof Error ? e : new Error(String(e))),
-      );
+      .catch((e: unknown) => setError(e instanceof Error ? e : new Error(String(e))));
   }, []);
 
   if (error) {

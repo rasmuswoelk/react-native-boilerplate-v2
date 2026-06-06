@@ -12,11 +12,7 @@ export async function updateCategory(
   id: CategoryEntity['id'],
   input: Partial<NewCategoryEntity>,
 ): Promise<CategoryEntity> {
-  const [updated] = await db
-    .update(categories)
-    .set(input)
-    .where(eq(categories.id, id))
-    .returning();
+  const [updated] = await db.update(categories).set(input).where(eq(categories.id, id)).returning();
   return updated;
 }
 

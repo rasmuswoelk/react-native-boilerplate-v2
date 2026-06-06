@@ -31,7 +31,14 @@ describe('inventory item queries', () => {
     const mockValues = jest.fn(() => ({ returning: mockReturning }));
     (db.insert as jest.Mock).mockReturnValueOnce({ values: mockValues });
 
-    const result = await createInventoryItem({ id: 'item-1', name: 'Passport', tags: '[]', quantity: 1, createdAt: now, updatedAt: now });
+    const result = await createInventoryItem({
+      id: 'item-1',
+      name: 'Passport',
+      tags: '[]',
+      quantity: 1,
+      createdAt: now,
+      updatedAt: now,
+    });
     expect(db.insert).toHaveBeenCalled();
     expect(result).toEqual(mockItem);
   });
@@ -43,7 +50,10 @@ describe('inventory item queries', () => {
     const mockSet = jest.fn(() => ({ where: mockWhere }));
     (db.update as jest.Mock).mockReturnValueOnce({ set: mockSet });
 
-    const result = await updateInventoryItem('item-1', { name: 'Updated Passport', updatedAt: now });
+    const result = await updateInventoryItem('item-1', {
+      name: 'Updated Passport',
+      updatedAt: now,
+    });
     expect(result.name).toBe('Updated Passport');
   });
 

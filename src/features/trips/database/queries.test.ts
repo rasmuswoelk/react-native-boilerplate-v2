@@ -1,17 +1,9 @@
 jest.mock('@/src/database/client');
 jest.mock('drizzle-orm');
 
-import {
-  createTrip,
-  createTripLocation,
-  deleteTrip,
-  deleteTripLocation,
-  getTripById,
-  updateTrip,
-  updateTripLocation,
-} from './queries';
-import { db } from '@/src/database/client';
 import { eq } from 'drizzle-orm';
+import { db } from '@/src/database/client';
+import { createTrip, createTripLocation, deleteTrip, getTripById, updateTrip } from './queries';
 
 const mockReturning = jest.fn() as any;
 const mockWhere = jest.fn(() => ({ returning: mockReturning })) as any;
@@ -48,7 +40,13 @@ describe('trip queries', () => {
 
   it('createTrip inserts and returns new record', async () => {
     mockReturning.mockResolvedValueOnce([mockTrip]);
-    const result = await createTrip({ id: 'trip-1', name: 'Tokyo Trip', status: 'upcoming', createdAt: now, updatedAt: now });
+    const result = await createTrip({
+      id: 'trip-1',
+      name: 'Tokyo Trip',
+      status: 'upcoming',
+      createdAt: now,
+      updatedAt: now,
+    });
     expect(mockInsert).toHaveBeenCalled();
     expect(result).toEqual(mockTrip);
   });
@@ -72,9 +70,30 @@ describe('trip queries', () => {
   });
 
   it('createTripLocation inserts and returns new record', async () => {
-    const mockLocation = { id: 'loc-1', tripId: 'trip-1', name: 'Tokyo', latitude: 35.6762, longitude: 139.6503, arrival: null, departure: null, sortOrder: 0, notes: null, createdAt: now, updatedAt: now };
+    const mockLocation = {
+      id: 'loc-1',
+      tripId: 'trip-1',
+      name: 'Tokyo',
+      latitude: 35.6762,
+      longitude: 139.6503,
+      arrival: null,
+      departure: null,
+      sortOrder: 0,
+      notes: null,
+      createdAt: now,
+      updatedAt: now,
+    };
     mockReturning.mockResolvedValueOnce([mockLocation]);
-    const result = await createTripLocation({ id: 'loc-1', tripId: 'trip-1', name: 'Tokyo', latitude: 35.6762, longitude: 139.6503, sortOrder: 0, createdAt: now, updatedAt: now });
+    const result = await createTripLocation({
+      id: 'loc-1',
+      tripId: 'trip-1',
+      name: 'Tokyo',
+      latitude: 35.6762,
+      longitude: 139.6503,
+      sortOrder: 0,
+      createdAt: now,
+      updatedAt: now,
+    });
     expect(result).toEqual(mockLocation);
   });
 });
