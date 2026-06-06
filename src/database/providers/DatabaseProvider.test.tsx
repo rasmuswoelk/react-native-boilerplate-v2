@@ -11,6 +11,10 @@ jest.mock('@/src/database/client', () => ({
   db: {},
 }));
 
+jest.mock('@/src/database/seed', () => ({
+  seedDatabase: jest.fn().mockResolvedValue(undefined),
+}));
+
 jest.mock('@powersync/react-native', () => ({
   PowerSyncContext: {
     Provider: ({ children }: { children: React.ReactNode }) => children,
