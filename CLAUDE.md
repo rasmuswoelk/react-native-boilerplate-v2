@@ -8,6 +8,37 @@ src/        App-specific code
 app/        Expo Router screens and navigation
 ```
 
+## Component placement
+
+Choose the lowest scope that covers all current consumers:
+
+| Location | Use when |
+|---|---|
+| `lib/components/` | Generic, portable — could be copied to any project unchanged |
+| `src/components/` | Shared across multiple features in this app |
+| `src/features/<feature>/components/` | Belongs to a feature; may be used by other features |
+| `src/features/<feature>/screens/<Screen>/` | Only used by one specific screen |
+
+Feature components used by other features must not be changed in a way that breaks those consumers. Either keep the API backwards-compatible or refactor all call sites.
+
+## Component folder structure
+
+Every component is a folder named after the component:
+
+```
+ComponentName/
+  ComponentName.tsx          — implementation
+  ComponentName.styles.ts    — styles (only if applicable)
+  ComponentName.types.ts     — non-trivial types (only if applicable)
+  index.ts                   — export * from './ComponentName'
+```
+
+Always import via the folder, never the file:
+```ts
+import { ComponentName } from '@/src/components/ComponentName'; // ✅
+import { ComponentName } from '@/src/components/ComponentName/ComponentName'; // ❌
+```
+
 ### lib/ — reusable library
 
 Code in `lib/` must be portable to any project built from this boilerplate without modification:
