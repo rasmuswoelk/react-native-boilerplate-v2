@@ -22,7 +22,9 @@
     "e2e:flow": "maestro test",
     "clean-project": "npx react-native-clean-project",
     "storybook": "EXPO_PUBLIC_STORYBOOK_ENABLED=true expo start",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "db:pull-ios": "xcrun simctl get_app_container booted com.rasmuswoelk.react-native-boilerplate data | xargs -I{} cp {}/Documents/mule.db ./mule.dev.db && echo 'Copied mule.db -> mule.dev.db'",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@babel/preset-react": "7.29.7",
