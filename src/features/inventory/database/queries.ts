@@ -19,6 +19,7 @@ export async function updateInventoryItem(
     .set(input)
     .where(eq(inventoryItems.id, id))
     .returning();
+  if (!updated) throw new Error(`InventoryItem with id ${id} not found`);
   return updated;
 }
 

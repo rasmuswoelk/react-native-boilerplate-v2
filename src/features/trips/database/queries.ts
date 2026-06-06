@@ -22,11 +22,17 @@ export async function updateTrip(
   input: Partial<NewTripEntity>,
 ): Promise<TripEntity> {
   const [updated] = await db.update(trips).set(input).where(eq(trips.id, id)).returning();
+  if (!updated) throw new Error(`Trip with id ${id} not found`);
   return updated;
 }
 
 export async function deleteTrip(id: TripEntity['id']): Promise<void> {
-  await db.delete(trips).where(eq(trips.id, id));
+  await db.transaction(async (tx) => {
+    await tx.delete(tripUsageReviews).where(eq(tripUsageReviews.tripId, id));
+    await tx.delete(tripItems).where(eq(tripItems.tripId, id));
+    await tx.delete(tripLocations).where(eq(tripLocations.tripId, id));
+    await tx.delete(trips).where(eq(trips.id, id));
+  });
 }
 
 export async function getTripById(id: TripEntity['id']): Promise<TripEntity | null> {
@@ -54,6 +60,7 @@ export async function updateTripLocation(
     .set(input)
     .where(eq(tripLocations.id, id))
     .returning();
+  if (!updated) throw new Error(`TripLocation with id ${id} not found`);
   return updated;
 }
 
@@ -81,11 +88,15 @@ export async function updateTripItem(
   input: Partial<NewTripItemEntity>,
 ): Promise<TripItemEntity> {
   const [updated] = await db.update(tripItems).set(input).where(eq(tripItems.id, id)).returning();
+  if (!updated) throw new Error(`TripItem with id ${id} not found`);
   return updated;
 }
 
 export async function deleteTripItem(id: TripItemEntity['id']): Promise<void> {
-  await db.delete(tripItems).where(eq(tripItems.id, id));
+  await db.transaction(async (tx) => {
+    await tx.delete(tripUsageReviews).where(eq(tripUsageReviews.tripItemId, id));
+    await tx.delete(tripItems).where(eq(tripItems.id, id));
+  });
 }
 
 export async function createTripUsageReview(
@@ -104,5 +115,6 @@ export async function updateTripUsageReview(
     .set(input)
     .where(eq(tripUsageReviews.id, id))
     .returning();
+  if (!updated) throw new Error(`TripUsageReview with id ${id} not found`);
   return updated;
 }

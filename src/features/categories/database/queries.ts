@@ -13,6 +13,7 @@ export async function updateCategory(
   input: Partial<NewCategoryEntity>,
 ): Promise<CategoryEntity> {
   const [updated] = await db.update(categories).set(input).where(eq(categories.id, id)).returning();
+  if (!updated) throw new Error(`Category with id ${id} not found`);
   return updated;
 }
 

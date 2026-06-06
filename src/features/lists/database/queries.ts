@@ -22,11 +22,15 @@ export async function updateList(
     .set(input)
     .where(eq(packingLists.id, id))
     .returning();
+  if (!updated) throw new Error(`PackingList with id ${id} not found`);
   return updated;
 }
 
 export async function deleteList(id: PackingListEntity['id']): Promise<void> {
-  await db.delete(packingLists).where(eq(packingLists.id, id));
+  await db.transaction(async (tx) => {
+    await tx.delete(packingListItems).where(eq(packingListItems.packingListId, id));
+    await tx.delete(packingLists).where(eq(packingLists.id, id));
+  });
 }
 
 export async function getListById(id: PackingListEntity['id']): Promise<PackingListEntity | null> {
@@ -54,6 +58,7 @@ export async function updateListItem(
     .set(input)
     .where(eq(packingListItems.id, id))
     .returning();
+  if (!updated) throw new Error(`PackingListItem with id ${id} not found`);
   return updated;
 }
 
