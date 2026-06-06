@@ -264,8 +264,6 @@ PODS:
     - RNScreens
   - ExpoSplashScreen (56.0.10):
     - ExpoModulesCore
-  - ExpoSQLite (56.0.4):
-    - ExpoModulesCore
   - ExpoSymbols (56.0.5):
     - ExpoModulesCore
   - ExpoSystemUI (56.0.5):
@@ -355,6 +353,54 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
+  - op-sqlite (15.2.14):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - powersync-op-sqlite (0.9.9):
+    - hermes-engine
+    - powersync-sqlite-core (~> 0.4.12)
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-callinvoker
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - powersync-sqlite-core (0.4.14)
   - RCTDeprecation (0.85.3)
   - RCTRequired (0.85.3)
   - RCTSwiftUI (0.85.3)
@@ -2655,7 +2701,6 @@ DEPENDENCIES:
   - "ExpoModulesWorkletsAdapter (from `../node_modules/.pnpm/expo-modules-core@56.0.14_react-native-worklets@0.9.1_@babel+core@7.29.7_@react-native+_a5c305673ff6c2ede065d683a4b54b94/node_modules/expo-modules-core`)"
   - "ExpoRouter (from `../node_modules/.pnpm/expo-router@56.2.8_1fb715dedc0e9901e8584f4423998004/node_modules/expo-router/ios`)"
   - "ExpoSplashScreen (from `../node_modules/.pnpm/expo-splash-screen@56.0.10_expo@56.0.8_typescript@6.0.3/node_modules/expo-splash-screen/ios`)"
-  - "ExpoSQLite (from `../node_modules/.pnpm/expo-sqlite@56.0.4_expo@56.0.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-com_f49d05741c461ce682f400e00555ae36/node_modules/expo-sqlite/ios`)"
   - "ExpoSymbols (from `../node_modules/.pnpm/expo-symbols@56.0.5_expo-font@56.0.5_expo@56.0.8_react-native@0.85.3_@babel+core@7.29.7_50d799046dd519fcb24a42411138a320/node_modules/expo-symbols/ios`)"
   - "ExpoSystemUI (from `../node_modules/.pnpm/expo-system-ui@56.0.5_expo@56.0.8_react-native-web@0.21.2_react-dom@19.2.3_react@19.2.3_e25fe7c6f0d8ae2acbd69104f6a481bd/node_modules/expo-system-ui/ios`)"
   - "ExpoUI (from `../node_modules/.pnpm/@expo+ui@56.0.15_fb7930c91ea9fb652b561b1f6aa46770/node_modules/@expo/ui/ios`)"
@@ -2666,6 +2711,8 @@ DEPENDENCIES:
   - "lottie-react-native (from `../node_modules/.pnpm/lottie-react-native@7.3.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-communit_0ad8719b5d7bd381122efbdfc06c5c0f/node_modules/lottie-react-native`)"
   - "NitroMmkv (from `../node_modules/.pnpm/react-native-mmkv@4.3.1_react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+co_eed39a4e51d1ebb78a9bc39322ebc9df/node_modules/react-native-mmkv`)"
   - "NitroModules (from `../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_e6de13d4a2153c99c4fbe2cc9700d842/node_modules/react-native-nitro-modules`)"
+  - "op-sqlite (from `../node_modules/.pnpm/@op-engineering+op-sqlite@15.2.14_react-native@0.85.3_@babel+core@7.29.7_@react-native-_8c1dcbc6bab130661b30b94075e43f07/node_modules/@op-engineering/op-sqlite`)"
+  - "powersync-op-sqlite (from `../node_modules/.pnpm/@powersync+op-sqlite@0.9.9_@op-engineering+op-sqlite@15.2.14_react-native@0.85.3_@babel_36ac153a06a8b82bb201b88176f88817/node_modules/@powersync/op-sqlite`)"
   - "RCTDeprecation (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.1.3_typescript@6._7e6ab6c74b903695df657e0b51432ff9/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)"
   - "RCTRequired (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.1.3_typescript@6._7e6ab6c74b903695df657e0b51432ff9/node_modules/react-native/Libraries/Required`)"
   - "RCTSwiftUI (from `../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.1.3_typescript@6._7e6ab6c74b903695df657e0b51432ff9/node_modules/react-native/ReactApple/RCTSwiftUI`)"
@@ -2756,6 +2803,7 @@ SPEC REPOS:
   trunk:
     - lottie-ios
     - MMKVCore
+    - powersync-sqlite-core
 
 EXTERNAL SOURCES:
   AsyncStorage:
@@ -2812,8 +2860,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/expo-router@56.2.8_1fb715dedc0e9901e8584f4423998004/node_modules/expo-router/ios"
   ExpoSplashScreen:
     :path: "../node_modules/.pnpm/expo-splash-screen@56.0.10_expo@56.0.8_typescript@6.0.3/node_modules/expo-splash-screen/ios"
-  ExpoSQLite:
-    :path: "../node_modules/.pnpm/expo-sqlite@56.0.4_expo@56.0.8_react-native@0.85.3_@babel+core@7.29.7_@react-native-com_f49d05741c461ce682f400e00555ae36/node_modules/expo-sqlite/ios"
   ExpoSymbols:
     :path: "../node_modules/.pnpm/expo-symbols@56.0.5_expo-font@56.0.5_expo@56.0.8_react-native@0.85.3_@babel+core@7.29.7_50d799046dd519fcb24a42411138a320/node_modules/expo-symbols/ios"
   ExpoSystemUI:
@@ -2835,6 +2881,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/react-native-mmkv@4.3.1_react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+co_eed39a4e51d1ebb78a9bc39322ebc9df/node_modules/react-native-mmkv"
   NitroModules:
     :path: "../node_modules/.pnpm/react-native-nitro-modules@0.35.7_react-native@0.85.3_@babel+core@7.29.7_@react-native-_e6de13d4a2153c99c4fbe2cc9700d842/node_modules/react-native-nitro-modules"
+  op-sqlite:
+    :path: "../node_modules/.pnpm/@op-engineering+op-sqlite@15.2.14_react-native@0.85.3_@babel+core@7.29.7_@react-native-_8c1dcbc6bab130661b30b94075e43f07/node_modules/@op-engineering/op-sqlite"
+  powersync-op-sqlite:
+    :path: "../node_modules/.pnpm/@powersync+op-sqlite@0.9.9_@op-engineering+op-sqlite@15.2.14_react-native@0.85.3_@babel_36ac153a06a8b82bb201b88176f88817/node_modules/@powersync/op-sqlite"
   RCTDeprecation:
     :path: "../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_@react-native-community+cli@20.1.3_typescript@6._7e6ab6c74b903695df657e0b51432ff9/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation"
   RCTRequired:
@@ -3032,7 +3082,6 @@ SPEC CHECKSUMS:
   ExpoModulesWorkletsAdapter: 031239a7004309b05b45b5e176e00f373fd45d2e
   ExpoRouter: c3023f1e6a702674e1f2973fe434058c16aba275
   ExpoSplashScreen: 6deba2c0000d89a38dc192ebbee1656a0fbb0b70
-  ExpoSQLite: 60a026ba25c2dc5e977cc62228a25393acffdd9b
   ExpoSymbols: 773655e2ad7b6bd6672b9c177a57f60cbc70eed8
   ExpoSystemUI: 5b9bfd2ccc7933ee41711b8cddabecd1eed697e2
   ExpoUI: 3c4244759c58c403b9379fdb29ba095d4f6c2b4f
@@ -3045,6 +3094,9 @@ SPEC CHECKSUMS:
   MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
   NitroMmkv: 1ff46eceb958298b1d7c013a6314432438b77a62
   NitroModules: ecbafa6d6e6297ff1c240b40ee027aea48ec4bf4
+  op-sqlite: 656ffebe35cb4178c80232b544de0efa561804d7
+  powersync-op-sqlite: 62279d2d3dffb66b6d1b3058fa402ec782370be6
+  powersync-sqlite-core: 6ce0b8b254812855e4ec52899ddc3ac6a30bda12
   RCTDeprecation: a4c521821fab57cbb125b36effe84d897d0dfa12
   RCTRequired: 9f3a7e5645d4bc3f551593de7550bb66ab6e42bc
   RCTSwiftUI: 239ed2eb9e73de5a6f518810630f0c95e01c8702

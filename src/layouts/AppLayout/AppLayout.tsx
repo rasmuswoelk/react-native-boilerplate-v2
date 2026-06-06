@@ -1,5 +1,6 @@
 import { useFonts } from '@expo-google-fonts/source-sans-3/useFonts';
 import { ReactNode } from 'react';
+import { DatabaseProvider } from '@/src/database/providers/DatabaseProvider';
 import { fonts } from '@/src/theme/fonts';
 
 type AppLayoutProps = {
@@ -13,5 +14,5 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     return null;
   }
 
-  return <>{children}</>;
+  return <DatabaseProvider>{children}</DatabaseProvider>;
 };
