@@ -48,6 +48,8 @@ export type { ComponentNameProps } from './ComponentName';
 
 None of these are optional. A component without tests or a story is invisible to the rest of the team and will be recreated.
 
+This requirement applies to shared components in `lib/components/`. It does **not** apply to feature screens under `src/features/<feature>/screens/`; screens should not get tests unless the user explicitly asks for them. For screen creation, follow `docs/skills/create-screen.md`.
+
 ---
 
 ## Component file conventions
@@ -56,6 +58,8 @@ None of these are optional. A component without tests or a story is invisible to
 - Accept and forward `style` for layout overrides at the call site
 - Accept `testID` via `ViewProps` or `TextProps` so tests can target the root element
 - Use theme tokens, never hardcoded colours or pixel values
+- Use Unistyles for theming. Do not import `StyleSheet` from `react-native` for themed components.
+- For user-visible text, prefer `Typography` from `@/lib/components/Typography` instead of React Native `Text`.
 
 ```tsx
 import type { ViewProps } from 'react-native';

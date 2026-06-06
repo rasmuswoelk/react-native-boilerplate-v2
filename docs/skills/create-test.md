@@ -13,6 +13,12 @@ Decide which test layer before writing anything:
 
 ## Unit Tests (jest)
 
+### Screen tests
+
+Do **not** add tests for new screen components by default.
+
+Only create tests for screens under `src/features/<feature>/screens/` when the user explicitly asks for screen tests or asks to test that screen. Shared `lib/components/` still require tests when created.
+
 ### File placement
 `lib/path/to/__tests__/filename.test.ts` (`.tsx` for components)
 
@@ -51,9 +57,10 @@ jest.mock('@/src/theme/fonts', () => ({
 
 ```tsx
 import { render } from '@testing-library/react-native'
+import { Typography } from '@/lib/components/Typography'
 
 it('renders children', () => {
-  const { getByText } = render(<Box><Text>hello</Text></Box>)
+  const { getByText } = render(<Box><Typography>hello</Typography></Box>)
   expect(getByText('hello')).toBeTruthy()
 })
 ```

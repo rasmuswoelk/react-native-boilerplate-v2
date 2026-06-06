@@ -1,1 +1,5 @@
-export { WelomeScreen as default } from "@/lib/screens/WelcomeScreen";
+import { Redirect } from 'expo-router';
+
+export default function Index() {
+  return <Redirect href="/(tabs)/trips" />;
+}

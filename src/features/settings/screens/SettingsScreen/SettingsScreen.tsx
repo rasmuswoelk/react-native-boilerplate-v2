@@ -2,10 +2,10 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Typography } from '@/lib/components/Typography';
 
-export function ListsScreen() {
+export function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Typography variant="h1">Lists</Typography>
+      <Typography variant="h1">Settings</Typography>
     </View>
   );
 }
