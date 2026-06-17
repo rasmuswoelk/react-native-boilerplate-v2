@@ -6,6 +6,8 @@ const categoryPath = resolve(root, 'src/features/suggestions/data/categories.ts'
 const inventoryPaths = [
   resolve(root, 'src/features/suggestions/data/inventory-item-suggestions.ts'),
 ];
+const englishTranslationsPath = resolve(root, 'src/translations/en.json');
+const danishTranslationsPath = resolve(root, 'src/translations/da.json');
 
 function read(path) {
   if (!existsSync(path)) {
@@ -57,6 +59,14 @@ function findDuplicates(values) {
   return [...duplicates];
 }
 
+function readJson(path) {
+  return JSON.parse(read(path));
+}
+
+function findMissingKeys(sourceKeys, translations) {
+  return sourceKeys.filter((key) => typeof translations[key] !== 'string');
+}
+
 const categoryText = read(categoryPath);
 const categoryIds = readIds(categoryText);
 const duplicateCategoryIds = findDuplicates(categoryIds);
@@ -93,6 +103,42 @@ if (invalidRecords.length > 0) {
     `Inventory suggestions with invalid names or weights: ${invalidRecords
       .map((record) => record.id)
       .join(', ')}`,
+  );
+}
+
+const englishTranslations = readJson(englishTranslationsPath).inventorySuggestions;
+const danishTranslations = readJson(danishTranslationsPath).inventorySuggestions;
+const missingEnglishCategoryKeys = findMissingKeys(
+  categoryIds,
+  englishTranslations?.categories ?? {},
+);
+const missingEnglishItemKeys = findMissingKeys(inventoryIds, englishTranslations?.items ?? {});
+const missingDanishCategoryKeys = findMissingKeys(
+  categoryIds,
+  danishTranslations?.categories ?? {},
+);
+
+if (missingEnglishCategoryKeys.length > 0) {
+  throw new Error(
+    `English translations are missing suggestion category keys: ${missingEnglishCategoryKeys.join(
+      ', ',
+    )}`,
+  );
+}
+
+if (missingEnglishItemKeys.length > 0) {
+  throw new Error(
+    `English translations are missing inventory suggestion keys: ${missingEnglishItemKeys.join(
+      ', ',
+    )}`,
+  );
+}
+
+if (missingDanishCategoryKeys.length > 0) {
+  throw new Error(
+    `Danish translations are missing suggestion category keys: ${missingDanishCategoryKeys.join(
+      ', ',
+    )}`,
   );
 }
 

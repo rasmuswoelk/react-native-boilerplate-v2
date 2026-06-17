@@ -34,3 +34,24 @@ export type InventoryItemSuggestion = {
   name: string;
   estimatedWeightGrams: number;
 };
+
+export type LocalizedSuggestionCategory = Omit<SuggestionCategory, 'name'> & {
+  name: string;
+  defaultName: string;
+  translationKey: string;
+};
+
+export type LocalizedInventoryItemSuggestion = Omit<InventoryItemSuggestion, 'name'> & {
+  name: string;
+  defaultName: string;
+  translationKey: string;
+};
+
+export type InventoryItemSuggestionGroup = {
+  category: LocalizedSuggestionCategory;
+  suggestions: LocalizedInventoryItemSuggestion[];
+};
+
+export type InventorySuggestionAvailability = LocalizedInventoryItemSuggestion & {
+  isAdded: boolean;
+};
