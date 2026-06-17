@@ -18,6 +18,7 @@
     "test": "jest --watch",
     "test:run": "jest --watchAll=false",
     "test:coverage": "jest --coverage --watchAll=false",
+    "suggestions:verify": "node scripts/verify-suggestions.mjs",
     "e2e": "maestro test e2e/",
     "e2e:flow": "maestro test",
     "clean-project": "npx react-native-clean-project",
